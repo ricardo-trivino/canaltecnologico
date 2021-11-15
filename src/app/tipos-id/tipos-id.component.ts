@@ -134,7 +134,7 @@ export class TiposIdComponent implements OnInit {
 
   }
 
-  //Buscar un tipo de documento su id para editarlo
+  //Buscar un tipo de identificación su id para editarlo
   buscarEditarTipoId() {
 
     if (this.BuscarEvalor != 0) {
@@ -152,7 +152,7 @@ export class TiposIdComponent implements OnInit {
 
   }
 
-  // Actualizar el tipo de documento 
+  // Actualizar el tipo de identificación 
   public ActualizarTipoId() {
 
     var nuevotipoid = this.ActualizarATipoId.getRawValue()['textnuevotipoid'];

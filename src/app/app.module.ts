@@ -13,6 +13,7 @@ import { ServicioTecnologicoService } from './servicio-tecnologico.service';
 import { AppComponent } from '../app/appcomponent/app.component';
 import { MenuInicioComponent } from './menu-inicio/menu-inicio.component';
 import { TiposIdComponent } from './tipos-id/tipos-id.component';
+import { TiposUsComponent } from './tipos-us/tipos-us.component';
 
 //========================================================================
 const appRoutes: Routes =
@@ -29,6 +30,10 @@ const appRoutes: Routes =
     {
       path: 'Tipo-Id',
       component: TiposIdComponent,
+    },
+    {
+      path: 'Tipo-Us',
+      component: TiposUsComponent,
     }
   ]
 
@@ -38,7 +43,8 @@ const appRoutes: Routes =
   declarations: [
     AppComponent,
     MenuInicioComponent,
-    TiposIdComponent
+    TiposIdComponent,
+    TiposUsComponent
   ],
   imports: [
     BrowserModule,

@@ -15,21 +15,21 @@ export class ServicioTecnologicoService {
   private Url: string = 'http://localhost:3000';
   constructor(private http: HttpClient) { }
 
-  // Método Listar de los Tipos de documentos 
+  // Método listar de los tipos de identificación 
   getTiposId(): Observable<any> {
 
     return this.http.get(this.Url + "/tipoid", httpOptions);
 
   }
 
-  // Método mostrar un solo Tipo de documento
+  // Método mostrar un solo tipo de identificación
   getTipoId(id: any): Observable<any> {
 
     return this.http.get(this.Url + "/tipoid" + id, httpOptions);
 
   }
 
-  // Método para insertar un nuevo Tipo de documento 
+  // Método para insertar un nuevo tipo de identificación 
   async insertTipoId(TipoIdD: any): Promise<any> {
 
     return new Promise((resolve, reject) => {
@@ -38,7 +38,7 @@ export class ServicioTecnologicoService {
 
   }
 
-  // Método para modificar un  Tipo de documento
+  // Método para modificar un tipo de usuario
   async updateTipoId(cadena: any): Promise<any> {
 
     return new Promise((resolve, reject) => {
@@ -46,5 +46,37 @@ export class ServicioTecnologicoService {
     });
 
   }
+
+    // Método listar de los tipos de usuario 
+    getTiposUs(): Observable<any> {
+
+      return this.http.get(this.Url + "/tipous", httpOptions);
+  
+    }
+  
+    // Método mostrar un solo tipo de usuario
+    getTipoUs(id: any): Observable<any> {
+  
+      return this.http.get(this.Url + "/tipous" + id, httpOptions);
+  
+    }
+  
+    // Método para insertar un nuevo tipo de usuario 
+    async insertTipoUs(TipoUsD: any): Promise<any> {
+  
+      return new Promise((resolve, reject) => {
+        this.http.post(this.Url + "/tipous", TipoUsD, httpOptions).toPromise()
+      });
+  
+    }
+  
+    // Método para modificar un tipo de identificación
+    async updateTipoUs(cadena: any): Promise<any> {
+  
+      return new Promise((resolve, reject) => {
+        this.http.put(this.Url + "/tipous", cadena, httpOptions).toPromise()
+      });
+  
+    }
 
 }
