@@ -100,10 +100,10 @@ export class ServicioTecnologicoService {
   }
 
   // Método para insertar un nuevo tipo de repuesto 
-  async insertTipoRe(TipoUsD: any): Promise<any> {
+  async insertTipoRe(TipoReD: any): Promise<any> {
 
     return new Promise((resolve, reject) => {
-      this.http.post(this.Url + "/tiporep", TipoUsD, httpOptions).toPromise()
+      this.http.post(this.Url + "/tiporep", TipoReD, httpOptions).toPromise()
     });
 
   }
@@ -134,10 +134,10 @@ export class ServicioTecnologicoService {
   }
 
   // Método para insertar un nuevo tipo de vehículo 
-  async insertTipoVe(TipoUsD: any): Promise<any> {
+  async insertTipoVe(TipoVeD: any): Promise<any> {
 
     return new Promise((resolve, reject) => {
-      this.http.post(this.Url + "/tipove", TipoUsD, httpOptions).toPromise()
+      this.http.post(this.Url + "/tipove", TipoVeD, httpOptions).toPromise()
     });
 
   }
@@ -147,6 +147,74 @@ export class ServicioTecnologicoService {
 
     return new Promise((resolve, reject) => {
       this.http.put(this.Url + "/tipove", cadena, httpOptions).toPromise()
+    });
+
+  }
+
+  //*****************************************************************************//
+
+  // Método listar de las marcas de vehículo 
+  getMarcasVe(): Observable<any> {
+
+    return this.http.get(this.Url + "/marcave", httpOptions);
+
+  }
+
+  // Método mostrar un solo tipo de vehículo
+  getMarcaVe(id: any): Observable<any> {
+
+    return this.http.get(this.Url + "/marcave" + id, httpOptions);
+
+  }
+
+  // Método para insertar un nuevo tipo de vehículo 
+  async insertMarcaVe(MarcaVeD: any): Promise<any> {
+
+    return new Promise((resolve, reject) => {
+      this.http.post(this.Url + "/marcave", MarcaVeD, httpOptions).toPromise()
+    });
+
+  }
+
+  // Método para modificar un tipo de vehículo
+  async updateMarcaVe(cadena: any): Promise<any> {
+
+    return new Promise((resolve, reject) => {
+      this.http.put(this.Url + "/marcave", cadena, httpOptions).toPromise()
+    });
+
+  }
+
+  //*****************************************************************************//
+
+  // Método listar de las formas de pago 
+  getFormasPa(): Observable<any> {
+
+    return this.http.get(this.Url + "/formapago", httpOptions);
+
+  }
+
+  // Método mostrar un solo tipo de vehículo
+  getFormaPa(id: any): Observable<any> {
+
+    return this.http.get(this.Url + "/formapago" + id, httpOptions);
+
+  }
+
+  // Método para insertar un nuevo tipo de vehículo 
+  async insertFormaPa(FormaPaD: any): Promise<any> {
+
+    return new Promise((resolve, reject) => {
+      this.http.post(this.Url + "/formapago", FormaPaD, httpOptions).toPromise()
+    });
+
+  }
+
+  // Método para modificar un tipo de vehículo
+  async updateFormaPa(cadena: any): Promise<any> {
+
+    return new Promise((resolve, reject) => {
+      this.http.put(this.Url + "/formapago", cadena, httpOptions).toPromise()
     });
 
   }
