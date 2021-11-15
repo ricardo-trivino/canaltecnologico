@@ -1,0 +1,152 @@
+<body>
+
+    <div class="encabezado">
+        <div class="adorno">
+            <div class="caja"></div>
+            <div class="caja"></div>
+        </div>
+        <a routerLink="/Inicio" class="enlace">Menú Inicio</a>
+        <div style="text-align:center" class="head">
+            <h1>
+                {{ title }}
+            </h1>
+            <img width="200" alt="Logo Proyecto" src="../assets/free-logo-i9r67fo4cz-4186t5au7q.jpg">
+        </div>
+    </div>
+
+    <div class="cuerpo">
+        <!--mostrar lista tipos de identificación-->
+        <div class="lista">
+            <h2> Lista de los tipos de identificación</h2>
+            <form (ngSubmit)="consultaTiposId(1)" [formGroup]="ListaTiposIde">
+                <button type="submit" style="margin-right: 30px"> Mostrar lista de tipos de identificación</button>
+                <button (click)="LimpiarLista()" style="scroll-margin-left: 30px"> Limpiar lista todos los tipos de
+                    identificación</button>
+                <br><br>
+                <h2>{{TituloTiposId}}</h2>
+                <table>
+                    <thead>
+                        <th>{{TablaTiposId[0]}}</th>
+                        <th>{{TablaTiposId[1]}}</th>
+                        <!--<th>{{TablaTiposId[2]}}</th>-->
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let tid of TiposId">
+                            <th>{{tid.id_tipo_identificacion}}</th>
+                            <th>{{tid.tipo_identificacion}}</th>
+                            <!--<th>{{tid.iniciales_tipo_identificacion}}</th>-->
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+        <br><br><br>
+
+        <!-- para mostrar un solo tipo de identificación -->
+        <div class="buscar">
+
+            <h2>Mostrar el tipo de identificación seleccionado: </h2>
+
+            <form (ngSubmit)="buscarTipoId()" [formGroup]="filtrarTipoId">
+                Tipo de identificación a mostrar
+                <select class="dropdown" formControlName="combofiltro" (click)="consultaTiposId(2)">
+                    <option value="value1">Tipo de identificación a buscar</option>
+                    <option *ngFor="let TipoId of comboListaTipoId" [value]="TipoId.id_tipo_identificacion">
+                        {{TipoId.tipo_identificacion}}
+                        <!--{{TipoId.iniciales_tipo_identificacion}}-->
+                    </option>
+                </select>
+                <br><br><br>
+                <button type="submit">Buscar tipo identificación</button>
+            </form>
+            <ul>
+                <h2>{{TituloTipoId}}</h2>
+                <table class="tabBuscar">
+                    <thead class="Colb">
+                        <th class="b">{{TabBusTiposId[0]}}</th>
+                        <th class="b">{{TabBusTiposId[1]}}</th>
+                        <!--<th class="b">{{TabBusTiposId[2]}}</th>-->
+                    </thead>
+
+                    <tbody class="Filb">
+                        <tr class="b" *ngFor="let tid of MiTipoId">
+                            <th class="b">{{tid.id_tipo_identificacion}}</th>
+                            <th class="b">{{tid.tipo_identificacion}}</th>
+                            <!--<th class="b">{{tid.iniciales_tipo_identificacion}}</th>-->
+                        </tr>
+                    </tbody>
+                </table>
+            </ul>
+
+
+        </div>
+        <br><br><br>
+
+        <!-- para crear un  tipo de identificación -->
+        <div class="crea">
+
+            <h2>Registrar un nuevo tipo de identificación</h2>
+
+            <form (ngSubmit)="InsertarTipoId()" [formGroup]="InsertarGTipoId">
+                Nuevo tipo de identificación
+                <label for="CTipoId"><input type="text" name="CTipoId" id="CTipoId"
+                        formControlName="textTipoId"></label>
+                <br><br>
+                <!--Iniciales nuevo tipo de identificación
+                <label for="InTipoId"><input type="text" name="InTipoId" id="InTipoId" formControlName="textIniTipoId"
+                        maxlength="3"></label>
+                <br><br>-->
+                <button type="submit">Insertar tipo de identificación</button>
+            </form>
+            <br><br>
+
+        </div>
+        <br><br><br>
+
+        <!-- para actualizar un tipo de identificación -->
+        <div class="edit">
+
+            <h2> Tipo de identificación a editar</h2>
+            <form (ngSubmit)="buscarEditarTipoId()" [formGroup]="ActualizarATipoId">
+                Tipo de identificación a editar:
+                <select class="dropdown" formControlName="BuscarIdTipoId" (click)="consultaTiposId(3)">
+                    <option value="value1">Tipo de identificación a editar</option>
+                    <option *ngFor="let TId of comboEditarTipoId" [value]="TId.id_tipo_identificacion">
+                        {{TId.tipo_identificacion}}
+                        <!--{{TId.iniciales_tipo_identificacion}}-->
+                    </option>
+                </select>
+                <br><br>
+                <button type="submit">Buscar tipo identifiación a editar</button>
+                <h2>{{TituloTipoIdEdit}}</h2>
+                <li *ngFor="let Id of MiTipoIdE">
+                    Nuevo tipo identificación
+                    <label for="ETipoId"><input type="text" name="ETipoId" id="ETipoId" value={{Id.tipo_identificacion}}
+                            [(ngModel)]="Id.tipo_identificacion" formControlName="textnuevotipoid"></label>
+                    <br><br>
+                    <!--Nuevas iniciales tipo identificación
+                    <label for="InTipoId"><input type="text" name="InTipoId" id="InTipoId"
+                            value={{Id.iniciales_tipo_identificacion}} [(ngModel)]="Id.iniciales_tipo_identificacion"
+                            formControlName="textnuevoinicialestipoid"></label>
+
+                    <br><br>-->
+                </li>
+                <br><br>
+                <button (click)="ActualizarTipoId()">Actualizar</button>
+            </form>
+            <br>
+
+        </div>
+        <br><br><br>
+    </div>
+
+    <footer>
+        <!-- Generated by https://smooth.ie/blogs/news/svg-wavey-transitions-between-sections -->
+        <div style="height: 150px; overflow: hidden;"><svg viewBox="0 0 500 150" preserveAspectRatio="none"
+                style="height: 100%; width: 100%;">
+                <path d="M0.28,4.45 C75.33,37.98 58.41,126.80 200.80,150.00 L0.00,150.00 L-18.34,-8.38 Z"
+                    style="stroke: none; fill: #08f;"></path>
+            </svg></div>
+    </footer>
+
+</body>
