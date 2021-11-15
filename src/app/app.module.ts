@@ -14,6 +14,8 @@ import { AppComponent } from '../app/appcomponent/app.component';
 import { MenuInicioComponent } from './menu-inicio/menu-inicio.component';
 import { TiposIdComponent } from './tipos-id/tipos-id.component';
 import { TiposUsComponent } from './tipos-us/tipos-us.component';
+import { TiposReComponent } from './tipos-re/tipos-re.component';
+import { TiposVeComponent } from './tipos-ve/tipos-ve.component';
 
 //========================================================================
 const appRoutes: Routes =
@@ -34,6 +36,14 @@ const appRoutes: Routes =
     {
       path: 'Tipo-Us',
       component: TiposUsComponent,
+    },
+    {
+      path: 'Tipo-Re',
+      component: TiposReComponent,
+    },
+    {
+      path: 'Tipo-Ve',
+      component: TiposVeComponent,
     }
   ]
 
@@ -44,7 +54,9 @@ const appRoutes: Routes =
     AppComponent,
     MenuInicioComponent,
     TiposIdComponent,
-    TiposUsComponent
+    TiposUsComponent,
+    TiposReComponent,
+    TiposVeComponent
   ],
   imports: [
     BrowserModule,

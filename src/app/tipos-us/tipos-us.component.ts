@@ -108,7 +108,7 @@ export class TiposUsComponent implements OnInit {
     var filtrovalor = this.filtrarTipoUs.getRawValue()['combofiltro'];
     this.servi.getTipoUs('/' + filtrovalor).subscribe((data: {}) => {
       this.MiTipoUs = data;
-      this.TituloTipoUs = "TIPO DE DOCUMENTO SELECCIONADO";
+      this.TituloTipoUs = "TIPO DE USUARIO SELECCIONADO";
       this.TabBusTiposUs[0] = "Indicador";
       this.TabBusTiposUs[1] = "Denominación";
     },
