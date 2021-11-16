@@ -1,0 +1,200 @@
+<body>
+
+    <div class="encabezado">
+        <div class="adorno">
+            <div class="caja"></div>
+            <div class="caja"></div>
+        </div>
+        <a routerLink="/Inicio" class="enlace">Menú Inicio</a>
+        <div style="text-align:center" class="head">
+            <h1>
+                {{ title }}
+            </h1>
+            <img width="200" alt="Logo Proyecto" src="../assets/free-logo-i9r67fo4cz-4186t5au7q.jpg">
+        </div>
+    </div>
+
+    <div class="cuerpo">
+        <!--mostrar lista vehículos-->
+        <div class="lista">
+            <h2> Lista de los vehículos</h2>
+            <form (ngSubmit)="consultaVehiculos(1)" [formGroup]="ListaVehiculos">
+                <button type="submit" style="margin-right: 30px"> Mostrar lista de vehículos</button>
+                <button (click)="LimpiarLista()" style="scroll-margin-left: 30px"> Limpiar lista todos los
+                    vehículos</button>
+                <br><br>
+                <h2>{{TituloVehiculos}}</h2>
+                <table>
+                    <thead>
+                        <th>{{TablaVehiculos[0]}}</th>
+                        <th>{{TablaVehiculos[1]}}</th>
+                        <th>{{TablaVehiculos[2]}}</th>
+                        <th>{{TablaVehiculos[3]}}</th>
+                        <th>{{TablaVehiculos[4]}}</th>
+                        <th>{{TablaVehiculos[5]}}</th>
+                        <th>{{TablaVehiculos[6]}}</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let veh of Vehiculos">
+                            <th>{{veh.id_vehiculo}}</th>
+                            <th>{{veh.placa_vehiculo}}</th>
+                            <th>{{veh.marca_vehiculo}}</th>
+                            <th>{{veh.modelo_vehiculo}}</th>
+                            <th>{{veh.color_vehiculo}}</th>
+                            <th>{{veh.tipo_vehiculo}}</th>
+                            <th>{{veh.CC_cliente}}</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+        <br><br><br>
+
+        <!-- para mostrar un solo vehículo -->
+        <div class="buscar">
+
+            <h2>Mostrar el vehículo seleccionado: </h2>
+
+            <form (ngSubmit)="buscarVehiculo()" [formGroup]="filtrarVehiculo">
+                Vehículo a mostrar
+                <select class="dropdown" formControlName="combofiltro" (click)="consultaVehiculos(2)">
+                    <option value="value1">Vehículo a buscar</option>
+                    <option *ngFor="let Vehiculo of comboListaVehiculo" [value]="Vehiculo.id_vehiculo">
+                        {{Vehiculo.placa_vehiculo}}-
+                        {{Vehiculo.marca_vehiculo}}-
+                        {{Vehiculo.modelo_vehiculo}}
+                    </option>
+                </select>
+                <br><br><br>
+                <button type="submit">Buscar vehículo</button>
+            </form>
+            <ul>
+                <h2>{{TituloVehiculo}}</h2>
+                <table class="tabBuscar">
+                    <thead class="Colb">
+                        <th class="b">{{TabBusVehiculos[0]}}</th>
+                        <th class="b">{{TabBusVehiculos[1]}}</th>
+                        <th class="b">{{TabBusVehiculos[2]}}</th>
+                        <th class="b">{{TabBusVehiculos[3]}}</th>
+                        <th class="b">{{TabBusVehiculos[4]}}</th>
+                        <th class="b">{{TabBusVehiculos[5]}}</th>
+                        <th class="b">{{TabBusVehiculos[6]}}</th>
+                    </thead>
+
+                    <tbody class="Filb">
+                        <tr class="b" *ngFor="let veh of MiVehiculo">
+                            <th class="b">{{veh.id_vehiculo}}</th>
+                            <th class="b">{{veh.placa_vehiculo}}</th>
+                            <th class="b">{{veh.marca_vehiculo}}</th>
+                            <th class="b">{{veh.modelo_vehiculo}}</th>
+                            <th class="b">{{veh.color_vehiculo}}</th>
+                            <th class="b">{{veh.tipo_vehiculo}}</th>
+                            <th class="b">{{veh.CC_cliente}}</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </ul>
+
+
+        </div>
+        <br><br><br>
+
+        <!-- para crear un  vehículo -->
+        <div class="crea">
+
+            <h2>Registrar un nuevo vehículo</h2>
+
+            <form (ngSubmit)="InsertarVehiculo()" [formGroup]="InsertarGVehiculo">
+                Placa vehículo
+                <label for="PVehiculo"><input type="text" name="PVehiculo" id="PVehiculo"
+                        formControlName="textPVehiculo"></label>
+                <br><br>
+                Marca vehículo
+                <label for="MAVehiculo"><input type="text" name="MAVehiculo" id="MAVehiculo"
+                        formControlName="textMAVehiculo"></label>
+                <br><br>
+                Modelo vehículo
+                <label for="MOVehiculo"><input type="text" name="MOVehiculo" id="MOVehiculo"
+                        formControlName="textMOVehiculo"></label>
+                <br><br>
+                Color vehículo
+                <label for="COVehiculo"><input type="text" name="COVehiculo" id="COVehiculo"
+                        formControlName="textCOVehiculo"></label>
+                <br><br>
+                Tipo vehículo
+                <label for="TVehiculo"><input type="text" name="TVehiculo" id="TVehiculo"
+                        formControlName="textTVehiculo"></label>
+                <br><br>
+                Cliente vehículo
+                <label for="CLVehiculo"><input type="text" name="CLVehiculo" id="CLVehiculo"
+                        formControlName="textCLVehiculo"></label>
+                <br><br>
+                <button type="submit">Insertar vehículo</button>
+            </form>
+            <br><br>
+
+        </div>
+        <br><br><br>
+
+        <!-- para actualizar un vehículo -->
+        <div class="edit">
+
+            <h2> Vehículo a editar</h2>
+            <form (ngSubmit)="buscarEditarVehiculo()" [formGroup]="ActualizarAVehiculo">
+                Vehículo a editar:
+                <select class="dropdown" formControlName="BuscarIdVehiculo" (click)="consultaVehiculos(3)">
+                    <option value="value1">Vehículo a editar</option>
+                    <option *ngFor="let Veh of comboEditarVehiculo" [value]="Veh.id_vehiculo">
+                        {{Veh.placa_vehiculo}}
+                        {{Veh.marca_vehiculo}}
+                        {{Veh.modelo_vehiculo}}
+                    </option>
+                </select>
+                <br><br>
+                <button type="submit">Buscar vehículo a editar</button>
+                <h2>{{TituloVehiculoEdit}}</h2>
+                <li *ngFor="let Veh of MiVehiculoE">
+                    Nueva placa vehículo
+                    <label for="PVehiculo"><input type="text" name="PVehiculo" id="PVehiculo" value={{Veh.placa_vehiculo}}
+                            [(ngModel)]="Veh.placa_vehiculo" formControlName="textnuevopvehiculo"></label>
+                    <br><br>
+                    Nueva marca vehículo
+                    <label for="MAVehiculo"><input type="text" name="MAVehiculo" id="MAVehiculo" value={{Veh.marca_vehiculo}}
+                            [(ngModel)]="Veh.marca_vehiculo" formControlName="textnuevomavehiculo"></label>
+                    <br><br>
+                    Nuevo modelo vehículo
+                    <label for="MOVehiculo"><input type="text" name="MOVehiculo" id="MOVehiculo" value={{Veh.modelo_vehiculo}}
+                            [(ngModel)]="Veh.modelo_vehiculo" formControlName="textnuevomovehiculo"></label>
+                    <br><br>
+                    Nuevo color vehículo
+                    <label for="COVehiculo"><input type="text" name="COVehiculo" id="COVehiculo" value={{Veh.color_vehiculo}}
+                            [(ngModel)]="Veh.color_vehiculo" formControlName="textnuevocovehiculo"></label>
+                    <br><br>
+                    Nuevo tipo vehículo
+                    <label for="TVehiculo"><input type="text" name="TVehiculo" id="TVehiculo" value={{Veh.tipo_vehiculo}}
+                            [(ngModel)]="Veh.tipo_vehiculo" formControlName="textnuevotvehiculo"></label>
+                    <br><br>
+                    Nuevo cliente vehículo
+                    <label for="CLVehiculo"><input type="text" name="CLVehiculo" id="CLVehiculo" value={{Veh.cliente_vehiculo}}
+                            [(ngModel)]="Veh.cliente_vehiculo" formControlName="textnuevoclvehiculo"></label>
+                    <br><br>
+                </li>
+                <br><br>
+                <button (click)="ActualizarVehiculo()">Actualizar</button>
+            </form>
+            <br>
+
+        </div>
+        <br><br><br>
+    </div>
+
+    <footer>
+        <!-- Generated by https://smooth.ie/blogs/news/svg-wavey-transitions-between-sections -->
+        <div style="height: 150px; overflow: hidden;"><svg viewBox="0 0 500 150" preserveAspectRatio="none"
+                style="height: 100%; width: 100%;">
+                <path d="M0.28,4.45 C75.33,37.98 58.41,126.80 200.80,150.00 L0.00,150.00 L-18.34,-8.38 Z"
+                    style="stroke: none; fill: #08f;"></path>
+            </svg></div>
+    </footer>
+
+</body>

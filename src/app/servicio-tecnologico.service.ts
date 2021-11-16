@@ -253,4 +253,38 @@ export class ServicioTecnologicoService {
 
   }
 
+    //*****************************************************************************//
+
+  // Método listar de los vehículos
+  getVehiculos(): Observable<any> {
+
+    return this.http.get(this.Url + "/vehiculo", httpOptions);
+
+  }
+
+  // Método mostrar una sola persona
+  getVehiculo(id: any): Observable<any> {
+
+    return this.http.get(this.Url + "/vehiculo" + id, httpOptions);
+
+  }
+
+  // Método para insertar una nueva persona
+  async insertVehiculo(VehiculoD: any): Promise<any> {
+
+    return new Promise((resolve, reject) => {
+      this.http.post(this.Url + "/vehiculo", VehiculoD, httpOptions).toPromise()
+    });
+
+  }
+
+  // Método para modificar una persona
+  async updateVehiculo(cadena: any): Promise<any> {
+
+    return new Promise((resolve, reject) => {
+      this.http.put(this.Url + "/vehiculo", cadena, httpOptions).toPromise()
+    });
+
+  }
+
 }
