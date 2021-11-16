@@ -18,6 +18,7 @@ import { TiposReComponent } from './tipos-re/tipos-re.component';
 import { TiposVeComponent } from './tipos-ve/tipos-ve.component';
 import { MarcasVeComponent } from './marcas-ve/marcas-ve.component';
 import { FormasPaComponent } from './formas-pa/formas-pa.component';
+import { PersonasComponent } from './personas/personas.component';
 
 //========================================================================
 const appRoutes: Routes =
@@ -54,6 +55,10 @@ const appRoutes: Routes =
     {
       path: 'Forma-Pa',
       component: FormasPaComponent,
+    },
+    {
+      path: 'Persona',
+      component: PersonasComponent,
     }
   ]
 
@@ -68,7 +73,8 @@ const appRoutes: Routes =
     TiposReComponent,
     TiposVeComponent,
     MarcasVeComponent,
-    FormasPaComponent
+    FormasPaComponent,
+    PersonasComponent
   ],
   imports: [
     BrowserModule,

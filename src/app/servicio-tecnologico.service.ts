@@ -219,4 +219,52 @@ export class ServicioTecnologicoService {
 
   }
 
+  //*****************************************************************************//
+
+  // Método listar de las personas
+  getPersonas(): Observable<any> {
+
+    return this.http.get(this.Url + "/persona", httpOptions);
+
+  }
+
+  // Método listar de los tipos de identificación 
+  getPersonaTiposId(): Observable<any> {
+
+    return this.http.get(this.Url + "/tipoid", httpOptions);
+
+  }
+
+  // Método listar de los tipos de usuario 
+  getPersonaTiposUs(): Observable<any> {
+
+    return this.http.get(this.Url + "/tipous", httpOptions);
+
+  }
+
+  // Método mostrar una sola persona
+  getPersona(id: any): Observable<any> {
+
+    return this.http.get(this.Url + "/persona" + id, httpOptions);
+
+  }
+
+  // Método para insertar una nueva persona
+  async insertPersona(PersonaD: any): Promise<any> {
+
+    return new Promise((resolve, reject) => {
+      this.http.post(this.Url + "/persona", PersonaD, httpOptions).toPromise()
+    });
+
+  }
+
+  // Método para modificar una persona
+  async updatePersona(cadena: any): Promise<any> {
+
+    return new Promise((resolve, reject) => {
+      this.http.put(this.Url + "/persona", cadena, httpOptions).toPromise()
+    });
+
+  }
+
 }

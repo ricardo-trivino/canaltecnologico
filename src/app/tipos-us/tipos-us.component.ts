@@ -39,8 +39,7 @@ export class TiposUsComponent implements OnInit {
     });
   InsertarGTipoUs = new FormGroup(
     {
-      textTipoUs: new FormControl(),
-      textIniTipoUs: new FormControl()
+      textTipoUs: new FormControl()
     });
   ActualizarATipoUs = new FormGroup(
     {

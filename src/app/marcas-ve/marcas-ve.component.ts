@@ -39,8 +39,7 @@ export class MarcasVeComponent implements OnInit {
     });
   InsertarGMarcaVe = new FormGroup(
     {
-      textMarcaVe: new FormControl(),
-      textIniMarcaVe: new FormControl()
+      textMarcaVe: new FormControl()
     });
   ActualizarAMarcaVe = new FormGroup(
     {

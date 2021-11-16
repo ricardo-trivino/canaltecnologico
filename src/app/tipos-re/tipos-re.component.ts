@@ -39,8 +39,7 @@ export class TiposReComponent implements OnInit {
     });
   InsertarGTipoRe = new FormGroup(
     {
-      textTipoRe: new FormControl(),
-      textIniTipoRe: new FormControl()
+      textTipoRe: new FormControl()
     });
   ActualizarATipoRe = new FormGroup(
     {

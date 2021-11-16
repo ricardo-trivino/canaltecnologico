@@ -40,12 +40,11 @@ export class FormasPaComponent implements OnInit {
   InsertarGFormaPa = new FormGroup(
     {
       textFormaPa: new FormControl(),
-      textIniFormaPa: new FormControl()
     });
   ActualizarAFormaPa = new FormGroup(
     {
       BuscarIdFormaPa: new FormControl(),
-      textnuevaformapa: new FormControl(),
+      textnuevaformapa: new FormControl()
       //textnuevoinicialestipoid: new FormControl()
     });
 

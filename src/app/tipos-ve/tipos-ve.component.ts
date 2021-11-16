@@ -39,8 +39,7 @@ export class TiposVeComponent implements OnInit {
     });
   InsertarGTipoVe = new FormGroup(
     {
-      textTipoVe: new FormControl(),
-      textIniTipoVe: new FormControl()
+      textTipoVe: new FormControl()
     });
   ActualizarATipoVe = new FormGroup(
     {

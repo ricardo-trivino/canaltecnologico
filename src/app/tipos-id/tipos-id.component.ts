@@ -39,8 +39,7 @@ export class TiposIdComponent implements OnInit {
     });
   InsertarGTipoId = new FormGroup(
     {
-      textTipoId: new FormControl(),
-      textIniTipoId: new FormControl()
+      textTipoId: new FormControl()
     });
   ActualizarATipoId = new FormGroup(
     {
@@ -134,7 +133,7 @@ export class TiposIdComponent implements OnInit {
 
   }
 
-  //Buscar un tipo de identificación su id para editarlo
+  //Buscar un tipo de identificación por su id para editarlo
   buscarEditarTipoId() {
 
     if (this.BuscarEvalor != 0) {
