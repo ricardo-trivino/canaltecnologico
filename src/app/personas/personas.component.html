@@ -172,10 +172,24 @@
                 <label for="DPersona"><input type="text" name="DPersona" id="DPersona"
                         formControlName="textDPersona"></label>
                 <br><br>
-                Tipo usuario persona
-                <label for="TUPersona"><input type="text" name="TUPersona" id="TUPersona"
-                        formControlName="textTUPersona"></label>
-                <br><br>
+                <form (ngSubmit)="buscarTipoUs()" [formGroup]="filtrarTipoUs">
+                    Tipo usuario persona
+                    <select class="opcA" formControlName="combofiltro" (click)="consultaTiposUs(2)">
+                        <option value="value1">Tipo de usuario</option>
+                        <option *ngFor="let TipoUs of comboListaTipoUs" [value]="TipoUs.id_tipo_usuario">
+                            {{TipoUs.tipo_usuario}}
+                        </option>
+                    </select>
+                    <button type="submit" class="special"></button>
+                    <br><br>
+                </form>
+                <li *ngFor="let Us of MiTipoUs">
+                    {{Us.tipo_usuario}}
+                    <label for="TUPersona" class="resultado"><input type="hidden" name="TUPersona" id="TUPersona"
+                            value={{Us.id_tipo_usuario}} [(ngModel)]="Us.id_tipo_usuario"
+                            formControlName="textTUPersona"></label>
+                    <br><br>
+                </li>
                 <button type="submit">Insertar persona</button>
             </form>
             <br><br>
@@ -200,12 +214,30 @@
                 <br><br>
                 <button type="submit">Buscar persona a editar</button>
                 <h2>{{TituloPersonaEdit}}</h2>
-                <li *ngFor="let Per of MiPersonaE">
-                    Nuevo tipo de identificación persona
+                <ul *ngFor="let Per of MiPersonaE">
+                    <!--Nuevo tipo de identificación persona
                     <label for="TIPersona"><input type="text" name="TIPersona" id="TIPersona"
                             value={{Per.tipo_identificacion}} [(ngModel)]="Per.tipo_identificacion"
                             formControlName="textnuevotipersona"></label>
-                    <br><br>
+                    <br><br>-->
+                    <form (ngSubmit)="buscarTipoId()" [formGroup]="filtrarTipoId">
+                        Nuevo tipo identificación persona
+                        <select class="opc2" formControlName="combofiltroid" (click)="consultaTiposId(2)">
+                            <option selected value="value1">tipo de identificación</option>
+                            <option *ngFor="let TipoId of comboListaTipoIdP" [value]="TipoId.id_tipo_identificacion">
+                                {{TipoId.tipo_identificacion}}
+                            </option>
+                        </select>
+                        <button type="submit" class="special"></button>
+                        <br><br>
+                    </form>
+                    <li *ngFor="let Id of MiTipoId">
+                        {{Id.tipo_identificacion}}
+                        <label for="TIPersona" class="resultado"><input type="hidden" name="TIPersona" id="TIPersona"
+                                value={{Id.id_tipo_identificacion}} [(ngModel)]="Id.id_tipo_identificacion"
+                                formControlName="textnuevotipersona"></label>
+                        <br><br>
+                    </li>
                     Nueva identificación persona
                     <label for="IPersona"><input type="text" name="IPersona" id="IPersona"
                             value={{Per.identificacion_persona}} [(ngModel)]="Per.identificacion_persona"
@@ -245,11 +277,29 @@
                             value={{Per.direccion_persona}} [(ngModel)]="Per.direccion_persona"
                             formControlName="textnuevodpersona"></label>
                     <br><br>
-                    Nuevo tipo usuario persona
+                    <!--Nuevo tipo usuario persona
                     <label for="TUPersona"><input type="text" name="TUPersona" id="TUPersona" value={{Per.tipo_usuario}}
                             [(ngModel)]="Per.tipo_usuario" formControlName="textnuevotupersona"></label>
-                    <br><br>
-                </li>
+                    <br><br>-->
+                    <form (ngSubmit)="buscarTipoUs()" [formGroup]="filtrarTipoUs">
+                        Nuevo tipo usuario persona
+                        <select class="opcB" formControlName="combofiltro" (click)="consultaTiposUs(2)">
+                            <option value="value1">Tipo de usuario</option>
+                            <option *ngFor="let TipoUs of comboListaTipoUs" [value]="TipoUs.id_tipo_usuario">
+                                {{TipoUs.tipo_usuario}}
+                            </option>
+                        </select>
+                        <button type="submit" class="special"></button>
+                        <br><br>
+                    </form>
+                    <li *ngFor="let Us of MiTipoUs">
+                        {{Us.tipo_usuario}}
+                        <label for="TUPersona" class="resultado"><input type="hidden" name="TUPersona" id="TUPersona"
+                                value={{Us.id_tipo_usuario}} [(ngModel)]="Us.id_tipo_usuario"
+                                formControlName="textnuevotupersona"></label>
+                        <br><br>
+                    </li>
+                </ul>
                 <br><br>
                 <button (click)="ActualizarPersona()">Actualizar</button>
             </form>

@@ -28,13 +28,11 @@
                     <thead>
                         <th>{{TablaTiposUs[0]}}</th>
                         <th>{{TablaTiposUs[1]}}</th>
-                        <!--<th>{{TablaTiposId[2]}}</th>-->
                     </thead>
                     <tbody>
                         <tr *ngFor="let tus of TiposUs">
                             <th>{{tus.id_tipo_usuario}}</th>
                             <th>{{tus.tipo_usuario}}</th>
-                            <!--<th>{{tid.iniciales_tipo_identificacion}}</th>-->
                         </tr>
                     </tbody>
                 </table>
@@ -53,7 +51,6 @@
                     <option value="value1">Tipo de usuario a buscar</option>
                     <option *ngFor="let TipoUs of comboListaTipoUs" [value]="TipoUs.id_tipo_usuario">
                         {{TipoUs.tipo_usuario}}
-                        <!--{{TipoId.iniciales_tipo_identificacion}}-->
                     </option>
                 </select>
                 <br><br><br>
@@ -65,14 +62,12 @@
                     <thead class="Colb">
                         <th class="b">{{TabBusTiposUs[0]}}</th>
                         <th class="b">{{TabBusTiposUs[1]}}</th>
-                        <!--<th class="b">{{TabBusTiposId[2]}}</th>-->
                     </thead>
 
                     <tbody class="Filb">
                         <tr class="b" *ngFor="let tus of MiTipoUs">
                             <th class="b">{{tus.id_tipo_usuario}}</th>
                             <th class="b">{{tus.tipo_usuario}}</th>
-                            <!--<th class="b">{{tid.iniciales_tipo_identificacion}}</th>-->
                         </tr>
                     </tbody>
                 </table>
@@ -92,10 +87,6 @@
                 <label for="CTipoUs"><input type="text" name="CTipoUs" id="CTipoUs"
                         formControlName="textTipoUs"></label>
                 <br><br>
-                <!--Iniciales nuevo tipo de identificación
-                <label for="InTipoId"><input type="text" name="InTipoId" id="InTipoId" formControlName="textIniTipoId"
-                        maxlength="3"></label>
-                <br><br>-->
                 <button type="submit">Insertar tipo de usuario</button>
             </form>
             <br><br>
@@ -124,12 +115,6 @@
                     <label for="ETipoUs"><input type="text" name="ETipoUs" id="ETipoUs" value={{Us.tipo_usuario}}
                             [(ngModel)]="Us.tipo_usuario" formControlName="textnuevotipous"></label>
                     <br><br>
-                    <!--Nuevas iniciales tipo identificación
-                    <label for="InTipoId"><input type="text" name="InTipoId" id="InTipoId"
-                            value={{Id.iniciales_tipo_identificacion}} [(ngModel)]="Id.iniciales_tipo_identificacion"
-                            formControlName="textnuevoinicialestipoid"></label>
-
-                    <br><br>-->
                 </li>
                 <br><br>
                 <button (click)="ActualizarTipoUs()">Actualizar</button>

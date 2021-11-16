@@ -13,19 +13,26 @@ export class PersonasComponent implements OnInit {
 
   Personas: any = []; //Lista de tipos de usuario
   TiposId: any = []; //Lista de tipos de identificación
+  TiposUs: any = []; //Lista de tipos de usuario
   TituloPersonas = ""; //Titulo lista de tipos de usuario
   TituloTiposId = ""; //Titulo lista de tipos de identificación
+  TituloTiposUs = ""; //Titulo lista de tipos de usuario
   TablaPersonas: any = []; //Encabezados tabla lista de tipos de usuario
   TablaTiposId: any = []; //Encabezados tabla lista de tipos de identificación
+  TablaTiposUs: any = []; //Encabezados tabla lista de tipos de usuario
 
   TituloPersona = ""; //Titulo del tipo de id buscado
   TituloTipoId = ""; //Titulo del tipo de id buscado
+  TituloTipoUs = ""; //Titulo del tipo de id buscado
   MiPersona: any = []; //Tipo de usuario buscado
   MiTipoId: any = []; //Tipo de identificación buscado
-  TabBusTiposId: any = []; //Encabezados tabla Tipo de identificación Buscado
+  MiTipoUs: any = []; //Tipo de usuario buscado
   TabBusPersonas: any = []; //Encabezados tabla tipo de usuario Buscado
+  TabBusTiposId: any = []; //Encabezados tabla Tipo de identificación Buscado
+  TabBusTiposUs: any = []; //Encabezados tabla tipo de usuario Buscado
   comboListaPersona: any = [];
   comboListaTipoIdP: any = [];
+  comboListaTipoUs: any = [];
 
   title = "Manejo de personas";
   controlLista = 1;  //Control para limpiar lista
@@ -33,10 +40,13 @@ export class PersonasComponent implements OnInit {
 
   TituloPersonaEdit = ""; //Titulo de tipo de usuario a editar
   TituloTipoIdEdit = ""; //Titulo de tipo de identificación a editar
+  TituloTipoUsEdit = ""; //Titulo de tipo de usuario a editar
   MiPersonaE: any = []; //Tipo de usuario a editar
   MiTipoIdE: any = []; //Tipo de identificación a editar
+  MiTipoUsE: any = []; //Tipo de usuario a editar
   comboEditarPersona: any = []; //Combo editar tipo de usuario
   comboEditarTipoId: any = []; //Combo editar tipo de identificación
+  comboEditarTipoUs: any = []; //Combo editar tipo de usuario
 
   //Form group 
   ListaPersonas = new FormGroup(
@@ -50,6 +60,10 @@ export class PersonasComponent implements OnInit {
   filtrarTipoId = new FormGroup(
     {
       combofiltroid: new FormControl()
+    });
+  filtrarTipoUs = new FormGroup(
+    {
+      combofiltro: new FormControl()
     });
   InsertarGPersona = new FormGroup(
     {
@@ -188,6 +202,45 @@ export class PersonasComponent implements OnInit {
 
   }
 
+  //Consultar todos los tipos de usuario
+  public consultaTiposUs(op: any) {
+
+    if (this.controlLista == 1) {
+      this.servi.getTiposUs().subscribe((data: any) => {
+        if (op == 1) {
+          let dat = data;
+          this.TiposUs = data;
+          this.TituloTiposUs = "LISTA DE TIPOS DE USUARIO";
+          this.TablaTiposUs[0] = "Indicador";
+          this.TablaTiposUs[1] = "Denominación";
+          //this.TablaTiposId[2] = "Iniciales";
+        }
+        else if (op == 2) {
+          this.comboListaTipoUs = data;
+          this.MiTipoUs = null;
+          this.TituloTipoUs = "";
+          this.TabBusTiposUs[0] = "";
+          this.TabBusTiposUs[1] = "";
+        }
+        else if (op == 3) {
+          this.comboEditarTipoUs = data;
+          this.MiTipoUsE = null;
+          this.TituloTipoUsEdit = "";
+        }
+      },
+        error => { console.error(error + " ") });
+    }
+    else {
+      this.TiposUs = null;
+      this.TituloTiposUs = "";
+      this.TablaTiposUs[0] = "";
+      this.TablaTiposUs[1] = "";
+      //this.TablaTiposId[2] = "";
+      this.controlLista = 1;
+    }
+
+  }
+
   //Limpiar la lista
   public LimpiarLista() {
 
@@ -227,6 +280,20 @@ export class PersonasComponent implements OnInit {
       this.TituloTipoId = "TIPO DE DOCUMENTO SELECCIONADO";
       this.TabBusTiposId[0] = "Indicador";
       this.TabBusTiposId[1] = "Denominación";
+    },
+      error => { console.log(error) });
+
+  }
+
+  //Buscar un tipo de usuario por su id
+  public buscarTipoUs() {
+
+    var filtrovalor = this.filtrarTipoUs.getRawValue()['combofiltro'];
+    this.servi.getTipoUs('/' + filtrovalor).subscribe((data: {}) => {
+      this.MiTipoUs = data;
+      this.TituloTipoUs = "TIPO DE USUARIO SELECCIONADO";
+      this.TabBusTiposUs[0] = "Indicador";
+      this.TabBusTiposUs[1] = "Denominación";
     },
       error => { console.log(error) });
 
@@ -327,6 +394,10 @@ export class PersonasComponent implements OnInit {
     this.filtrarTipoId = this.formBuilder.group(
       {
         combofiltroid: []
+      });
+    this.filtrarTipoUs = this.formBuilder.group(
+      {
+        combofiltro: []
       });
   }
 
