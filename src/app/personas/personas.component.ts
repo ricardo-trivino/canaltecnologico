@@ -7,29 +7,36 @@ import { ServicioTecnologicoService } from '../servicio-tecnologico.service';
 @Component({
   selector: 'app-personas',
   templateUrl: './personas.component.html',
-  styleUrls: ['./personas.component.css']
+  styleUrls: ['./personas.component.css'],
 })
 export class PersonasComponent implements OnInit {
 
   Personas: any = []; //Lista de tipos de usuario
-  TituloPersonas = ""; //Titulo lista de tipos de usuario
-  TablaPersonas: any = []; //Encabezados tabla lista de tipos de usuario
   TiposId: any = []; //Lista de tipos de identificación
-  MiTipoIdE: any = []; //Tipo de identificación a editar
+  TituloPersonas = ""; //Titulo lista de tipos de usuario
+  TituloTiposId = ""; //Titulo lista de tipos de identificación
+  TablaPersonas: any = []; //Encabezados tabla lista de tipos de usuario
+  TablaTiposId: any = []; //Encabezados tabla lista de tipos de identificación
 
   TituloPersona = ""; //Titulo del tipo de id buscado
+  TituloTipoId = ""; //Titulo del tipo de id buscado
   MiPersona: any = []; //Tipo de usuario buscado
+  MiTipoId: any = []; //Tipo de identificación buscado
+  TabBusTiposId: any = []; //Encabezados tabla Tipo de identificación Buscado
   TabBusPersonas: any = []; //Encabezados tabla tipo de usuario Buscado
   comboListaPersona: any = [];
-  comboListaPersonaTiposId: any = [];
+  comboListaTipoIdP: any = [];
 
   title = "Manejo de personas";
   controlLista = 1;  //Control para limpiar lista
   BuscarEvalor = 1; //Control para carga el valor a buscar
 
   TituloPersonaEdit = ""; //Titulo de tipo de usuario a editar
+  TituloTipoIdEdit = ""; //Titulo de tipo de identificación a editar
   MiPersonaE: any = []; //Tipo de usuario a editar
+  MiTipoIdE: any = []; //Tipo de identificación a editar
   comboEditarPersona: any = []; //Combo editar tipo de usuario
+  comboEditarTipoId: any = []; //Combo editar tipo de identificación
 
   //Form group 
   ListaPersonas = new FormGroup(
@@ -42,7 +49,7 @@ export class PersonasComponent implements OnInit {
     });
   filtrarTipoId = new FormGroup(
     {
-      combofiltro: new FormControl()
+      combofiltroid: new FormControl()
     });
   InsertarGPersona = new FormGroup(
     {
@@ -71,13 +78,6 @@ export class PersonasComponent implements OnInit {
       textnuevocpersona: new FormControl(),
       textnuevodpersona: new FormControl(),
       textnuevotupersona: new FormControl()
-      //textnuevoinicialestipoid: new FormControl()
-    });
-  ActualizarATipoId = new FormGroup(
-    {
-      BuscarIdTipoId: new FormControl(),
-      //texttipoid: new FormControl(),
-      //textnuevoinicialestipoid: new FormControl()
     });
 
   constructor
@@ -107,7 +107,6 @@ export class PersonasComponent implements OnInit {
           this.TablaPersonas[8] = "Correo";
           this.TablaPersonas[9] = "Dirección";
           this.TablaPersonas[10] = "Rol";
-          //this.TablaTiposId[2] = "Iniciales";
         }
         else if (op == 2) {
           this.comboListaPersona = data;
@@ -147,7 +146,43 @@ export class PersonasComponent implements OnInit {
       this.TablaPersonas[8] = "";
       this.TablaPersonas[9] = "";
       this.TablaPersonas[10] = "";
-      //this.TablaTiposId[2] = "";
+      this.controlLista = 1;
+    }
+
+  }
+
+  //Consultar todos los tipos de identificación
+  public consultaTiposId(op: any) {
+
+    if (this.controlLista == 1) {
+      this.servi.getTiposId().subscribe((data: any) => {
+        if (op == 1) {
+          let dat = data;
+          this.TiposId = data;
+          this.TituloTiposId = "LISTA DE TIPOS DE IDENTIFICACIÓN";
+          this.TablaTiposId[0] = "Indicador";
+          this.TablaTiposId[1] = "Denominación";
+        }
+        else if (op == 2) {
+          this.comboListaTipoIdP = data;
+          this.MiTipoId = null;
+          this.TituloTipoId = "";
+          this.TabBusTiposId[0] = "";
+          this.TabBusTiposId[1] = "";
+        }
+        else if (op == 3) {
+          this.comboEditarTipoId = data;
+          this.MiTipoIdE = null;
+          this.TituloTipoIdEdit = "";
+        }
+      },
+        error => { console.error(error + " ") });
+    }
+    else {
+      this.TiposId = null;
+      this.TituloTiposId = "";
+      this.TablaTiposId[0] = "";
+      this.TablaTiposId[1] = "";
       this.controlLista = 1;
     }
 
@@ -183,21 +218,17 @@ export class PersonasComponent implements OnInit {
 
   }
 
-  //Buscar todos los tipos de identificación
-  public buscarPersonaTiposId() {
-    this.servi.getPersonaTiposId().subscribe((data: any) => {
-      this.TiposId = data;
-    }, error => { console.error(error + "error") });
-  }
+  //Buscar un tipo de identificación por su id
+  public buscarTipoId() {
 
-  //Buscar un tipo de identificación por su id para editarlo
-  buscarEditarTipoId() {
-
-    if (this.BuscarEvalor != 0) {
-      this.BuscarEvalor = this.ActualizarATipoId.getRawValue()['BuscarIdTipoId'];
-      console.error(" dos el filtro " + this.BuscarEvalor);
-    }
-    console.error(" tres el filtro " + this.BuscarEvalor);
+    var filtrovalorid = this.filtrarTipoId.getRawValue()['combofiltroid'];
+    this.servi.getTipoId('/' + filtrovalorid).subscribe((data: {}) => {
+      this.MiTipoId = data;
+      this.TituloTipoId = "TIPO DE DOCUMENTO SELECCIONADO";
+      this.TabBusTiposId[0] = "Indicador";
+      this.TabBusTiposId[1] = "Denominación";
+    },
+      error => { console.log(error) });
 
   }
 
@@ -295,7 +326,7 @@ export class PersonasComponent implements OnInit {
       });
     this.filtrarTipoId = this.formBuilder.group(
       {
-
+        combofiltroid: []
       });
   }
 

@@ -126,33 +126,25 @@
             <h2>Registrar una nueva persona</h2>
 
             <form (ngSubmit)="InsertarPersona()" [formGroup]="InsertarGPersona">
-                Tipo identificación persona
-                <!--<label for="TIPersona"><input type="text" name="TIPersona" id="TIPersona"
-                        formControlName="textTIPersona"></label>
-                <br><br>-->
-                <!--<form (ngSubmit)="buscarTipoId()" [formGroup]="filtrarTipoId">
-                    <select class="dropdown" formControlName="combofiltro" (click)="consultaTiposId(2)">
-                        <option value="value1">Tipo de identificación a buscar</option>
-                        <option *ngFor="let TipoId of comboListaTipoId" [value]="TipoId.id_tipo_identificacion">
+
+                <form (ngSubmit)="buscarTipoId()" [formGroup]="filtrarTipoId">
+                    Tipo identificación persona
+                    <select class="opc" formControlName="combofiltroid" (click)="consultaTiposId(2)">
+                        <option value="value1">Tipo de identificación</option>
+                        <option *ngFor="let TipoId of comboListaTipoIdP" [value]="TipoId.id_tipo_identificacion">
                             {{TipoId.tipo_identificacion}}
                         </option>
                     </select>
-                </form>-->
-                <!--<select class="opc">
-                    <option value="value1">Tipo de identificación</option>
-                    <option value="CC">CC</option>
-                    <option value="CE">CE</option>
-                    <option value="PA">PA</option>
-                    <option value="DNI">DNI</option>
-                    <option value="TI">TI</option>
-                </select>-->
-                <select class="opc" formControlName="BuscarIdTipoId" (click)="buscarPersonaTiposId()">
-                    <option value="value1">Tipo identificación</option>
-                    <option *ngFor="let Per of TiposId" [value]="Per.id_tipo_identificacion">
-                        {{Per.tipo_identificacion}}
-                    </option>
-                </select>
-                <br><br>
+                    <input type="submit">
+                    <br><br>
+                    <!--<button type="submit">Buscar tipo identificación</button>-->
+                </form>
+                <li *ngFor="let Id of MiTipoId">
+                    {{Id.id_tipo_identificacion}}
+                    <label for="TIPersona"><input type="hidden" name="TIPersona" id="TIPersona" value={{Id.id_tipo_identificacion}}
+                            [(ngModel)]="Id.id_tipo_identificacion" formControlName="textTIPersona"></label>
+                    <br><br>
+                </li>
                 Identificación persona
                 <label for="IPersona"><input type="text" name="IPersona" id="IPersona"
                         formControlName="textIPersona"></label>
@@ -208,7 +200,6 @@
                         {{Per.identificacion_persona}}-
                         {{Per.p_nombre_persona}}-
                         {{Per.p_apellido_persona}}
-                        <!--{{TId.iniciales_tipo_identificacion}}-->
                     </option>
                 </select>
                 <br><br>
@@ -263,12 +254,6 @@
                     <label for="TUPersona"><input type="text" name="TUPersona" id="TUPersona" value={{Per.tipo_usuario}}
                             [(ngModel)]="Per.tipo_usuario" formControlName="textnuevotupersona"></label>
                     <br><br>
-                    <!--Nuevas iniciales tipo identificación
-                    <label for="InTipoId"><input type="text" name="InTipoId" id="InTipoId"
-                            value={{Id.iniciales_tipo_identificacion}} [(ngModel)]="Id.iniciales_tipo_identificacion"
-                            formControlName="textnuevoinicialestipoid"></label>
-
-                    <br><br>-->
                 </li>
                 <br><br>
                 <button (click)="ActualizarPersona()">Actualizar</button>

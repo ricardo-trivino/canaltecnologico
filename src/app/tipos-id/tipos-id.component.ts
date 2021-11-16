@@ -88,7 +88,6 @@ export class TiposIdComponent implements OnInit {
       this.TituloTiposId = "";
       this.TablaTiposId[0] = "";
       this.TablaTiposId[1] = "";
-      //this.TablaTiposId[2] = "";
       this.controlLista = 1;
     }
 
