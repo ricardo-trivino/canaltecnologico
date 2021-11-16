@@ -28,13 +28,11 @@
                     <thead>
                         <th>{{TablaTiposId[0]}}</th>
                         <th>{{TablaTiposId[1]}}</th>
-                        <!--<th>{{TablaTiposId[2]}}</th>-->
                     </thead>
                     <tbody>
                         <tr *ngFor="let tid of TiposId">
                             <th>{{tid.id_tipo_identificacion}}</th>
                             <th>{{tid.tipo_identificacion}}</th>
-                            <!--<th>{{tid.iniciales_tipo_identificacion}}</th>-->
                         </tr>
                     </tbody>
                 </table>
@@ -64,14 +62,12 @@
                     <thead class="Colb">
                         <th class="b">{{TabBusTiposId[0]}}</th>
                         <th class="b">{{TabBusTiposId[1]}}</th>
-                        <!--<th class="b">{{TabBusTiposId[2]}}</th>-->
                     </thead>
 
                     <tbody class="Filb">
                         <tr class="b" *ngFor="let tid of MiTipoId">
                             <th class="b">{{tid.id_tipo_identificacion}}</th>
                             <th class="b">{{tid.tipo_identificacion}}</th>
-                            <!--<th class="b">{{tid.iniciales_tipo_identificacion}}</th>-->
                         </tr>
                     </tbody>
                 </table>
@@ -91,10 +87,6 @@
                 <label for="CTipoId"><input type="text" name="CTipoId" id="CTipoId"
                         formControlName="textTipoId"></label>
                 <br><br>
-                <!--Iniciales nuevo tipo de identificación
-                <label for="InTipoId"><input type="text" name="InTipoId" id="InTipoId" formControlName="textIniTipoId"
-                        maxlength="3"></label>
-                <br><br>-->
                 <button type="submit">Insertar tipo de identificación</button>
             </form>
             <br><br>
@@ -112,7 +104,6 @@
                     <option value="value1">Tipo de identificación a editar</option>
                     <option *ngFor="let TId of comboEditarTipoId" [value]="TId.id_tipo_identificacion">
                         {{TId.tipo_identificacion}}
-                        <!--{{TId.iniciales_tipo_identificacion}}-->
                     </option>
                 </select>
                 <br><br>
@@ -123,12 +114,6 @@
                     <label for="ETipoId"><input type="text" name="ETipoId" id="ETipoId" value={{Id.tipo_identificacion}}
                             [(ngModel)]="Id.tipo_identificacion" formControlName="textnuevotipoid"></label>
                     <br><br>
-                    <!--Nuevas iniciales tipo identificación
-                    <label for="InTipoId"><input type="text" name="InTipoId" id="InTipoId"
-                            value={{Id.iniciales_tipo_identificacion}} [(ngModel)]="Id.iniciales_tipo_identificacion"
-                            formControlName="textnuevoinicialestipoid"></label>
-
-                    <br><br>-->
                 </li>
                 <br><br>
                 <button (click)="ActualizarTipoId()">Actualizar</button>

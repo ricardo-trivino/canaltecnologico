@@ -87,7 +87,7 @@ export class PersonasComponent implements OnInit {
       Router: Router
     ) { }
 
-  //Consultar todos los tipos de usuario
+  //Consultar todas las personas
   public consultaPersonas(op: any) {
 
     if (this.controlLista == 1) {
@@ -195,7 +195,7 @@ export class PersonasComponent implements OnInit {
 
   }
 
-  //Buscar un tipo de usuario por su id
+  //Buscar una persona por su id
   public buscarPersona() {
 
     var filtrovalor = this.filtrarPersona.getRawValue()['combofiltro'];
@@ -232,7 +232,7 @@ export class PersonasComponent implements OnInit {
 
   }
 
-  //Insertar un tipo de usuario
+  //Insertar una persona
   public InsertarPersona() {
 
     var datosvalor1 = this.InsertarGPersona.getRawValue()['textTIPersona'];
@@ -262,7 +262,7 @@ export class PersonasComponent implements OnInit {
 
   }
 
-  //Buscar un tipo de usuario su id para editarlo
+  //Buscar una persona por su id para editarla
   buscarEditarPersona() {
 
     if (this.BuscarEvalor != 0) {

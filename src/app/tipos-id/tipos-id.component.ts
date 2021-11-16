@@ -45,7 +45,6 @@ export class TiposIdComponent implements OnInit {
     {
       BuscarIdTipoId: new FormControl(),
       textnuevotipoid: new FormControl(),
-      //textnuevoinicialestipoid: new FormControl()
     });
 
   constructor
@@ -66,7 +65,6 @@ export class TiposIdComponent implements OnInit {
           this.TituloTiposId = "LISTA DE TIPOS DE IDENTIFICACIÓN";
           this.TablaTiposId[0] = "Indicador";
           this.TablaTiposId[1] = "Denominación";
-          //this.TablaTiposId[2] = "Iniciales";
         }
         else if (op == 2) {
           this.comboListaTipoId = data;
@@ -118,8 +116,7 @@ export class TiposIdComponent implements OnInit {
   public InsertarTipoId() {
 
     var datosvalo2 = this.InsertarGTipoId.getRawValue()['textTipoId'];
-    //var datosvalo1 = this.InsertarGTipoId.getRawValue()['textIniTipoId'];
-    var cadena = { "tipo_identificacion": datosvalo2/*, "iniciales_tipo_id": datosvalo1*/ };
+    var cadena = { "tipo_identificacion": datosvalo2};
 
     this.servi.insertTipoId(cadena).then
       (res => {
@@ -154,9 +151,8 @@ export class TiposIdComponent implements OnInit {
   public ActualizarTipoId() {
 
     var nuevotipoid = this.ActualizarATipoId.getRawValue()['textnuevotipoid'];
-    //var nuevoinitipdoc = this.ActualizarATipoId.getRawValue()['textnuevoinicialestipoid'];
 
-    var cadena = { "id_tipo_identificacion": this.BuscarEvalor, "tipo_identificacion": nuevotipoid/*, "iniciales_tip_doc": nuevoinitipdoc*/ };
+    var cadena = { "id_tipo_identificacion": this.BuscarEvalor, "tipo_identificacion": nuevotipoid};
 
     this.servi.updateTipoId(cadena).then
       (

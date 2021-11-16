@@ -228,27 +228,6 @@ export class ServicioTecnologicoService {
 
   }
 
-  // Método listar de un tipo de identificación 
-  getPersonaTipoId(id: any): Observable<any> {
-
-    return this.http.get(this.Url + "/tipoid" + id, httpOptions);
-
-  }
-
-  // Método listar de los tipos de identificación 
-  getPersonaTiposId(): Observable<any> {
-
-    return this.http.get(this.Url + "/tipoid", httpOptions);
-
-  }
-
-  // Método listar de los tipos de usuario 
-  getPersonaTiposUs(): Observable<any> {
-
-    return this.http.get(this.Url + "/tipous", httpOptions);
-
-  }
-
   // Método mostrar una sola persona
   getPersona(id: any): Observable<any> {
 
