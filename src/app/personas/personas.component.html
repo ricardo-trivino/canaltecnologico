@@ -135,14 +135,14 @@
                             {{TipoId.tipo_identificacion}}
                         </option>
                     </select>
-                    <input type="submit">
+                    <button type="submit" class="special"></button>
                     <br><br>
-                    <!--<button type="submit">Buscar tipo identificación</button>-->
                 </form>
                 <li *ngFor="let Id of MiTipoId">
-                    {{Id.id_tipo_identificacion}}
-                    <label for="TIPersona"><input type="hidden" name="TIPersona" id="TIPersona" value={{Id.id_tipo_identificacion}}
-                            [(ngModel)]="Id.id_tipo_identificacion" formControlName="textTIPersona"></label>
+                    {{Id.tipo_identificacion}}
+                    <label for="TIPersona" class="resultado"><input type="hidden" name="TIPersona" id="TIPersona"
+                            value={{Id.id_tipo_identificacion}} [(ngModel)]="Id.id_tipo_identificacion"
+                            formControlName="textTIPersona"></label>
                     <br><br>
                 </li>
                 Identificación persona
