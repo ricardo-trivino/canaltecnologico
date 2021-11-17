@@ -228,10 +228,24 @@ export class ServicioTecnologicoService {
 
   }
 
+  // Método listar de las personas
+  getClientes(): Observable<any> {
+
+    return this.http.get(this.Url + "/persona/cliente", httpOptions);
+
+  }
+
   // Método mostrar una sola persona
   getPersona(id: any): Observable<any> {
 
     return this.http.get(this.Url + "/persona" + id, httpOptions);
+
+  }
+
+  // Método mostrar una sola persona
+  getCliente(id: any): Observable<any> {
+
+    return this.http.get(this.Url + "/persona/cliente" + id, httpOptions);
 
   }
 
@@ -253,7 +267,7 @@ export class ServicioTecnologicoService {
 
   }
 
-    //*****************************************************************************//
+  //*****************************************************************************//
 
   // Método listar de los vehículos
   getVehiculos(): Observable<any> {

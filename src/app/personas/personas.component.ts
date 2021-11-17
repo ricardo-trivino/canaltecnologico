@@ -213,7 +213,6 @@ export class PersonasComponent implements OnInit {
           this.TituloTiposUs = "LISTA DE TIPOS DE USUARIO";
           this.TablaTiposUs[0] = "Indicador";
           this.TablaTiposUs[1] = "Denominación";
-          //this.TablaTiposId[2] = "Iniciales";
         }
         else if (op == 2) {
           this.comboListaTipoUs = data;
@@ -235,7 +234,6 @@ export class PersonasComponent implements OnInit {
       this.TituloTiposUs = "";
       this.TablaTiposUs[0] = "";
       this.TablaTiposUs[1] = "";
-      //this.TablaTiposId[2] = "";
       this.controlLista = 1;
     }
 

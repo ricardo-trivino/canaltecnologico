@@ -8,7 +8,7 @@ select {
 	cursor: pointer;
   	padding: 3px 3px;
     width: 230px;
-  	height: 28px;
+  	height: 29px;
   	outline: 0; 
   	border: 0;
 	border-radius: 0;
@@ -152,60 +152,56 @@ div.dir
 div.lista
 {
     position: relative;
-    left: 400px;
+    left: 385px;
     border: 3px  solid rgb(248, 77, 205); 
     border-radius: 5px;
-    width: 580px;
+    width: 590px;
     background:linear-gradient(30deg, bisque,snow, beige, antiquewhite, cornsilk);
     box-shadow: 10px 10px 5px 1px rgba(0.5, 0.5, 0.2, 0.2);
-    text-align: center;
+    text-align: center
 }
 
 div.lista:hover {
-    left:0;
-    width: 1332px;
-    padding: 0;
+    padding: 1px;
     box-shadow: 15px 15px 10px 2px rgba(0.5, 0.5, 0.2, 0.2);
-    transition: 1.1s;
-    transition-delay: 0.5s;
+    transition: 0.5s;
+    transition-delay: 0.05s;
 }
 
 div.buscar
 {
     position: relative;
-    left: 400px;
+    left: 385px;
     border: 3px  solid rgb(165, 228, 160);
     border-radius: 5px;
-    width: 580px;
+    width: 590px;
     background:linear-gradient(30deg, cornsilk,white, mistyrose, cornsilk, thistle);
     box-shadow: 10px 10px 5px 1px rgba(0.5, 0.5, 0.2, 0.2);
     text-align: center
 }
 
 div.buscar:hover {
-    left:0;
-    width: 1332px;
-    padding: 0;
+    padding: 1px;
     box-shadow: 15px 15px 10px 2px rgba(0.5, 0.5, 0.2, 0.2);
-    transition: 1.1s;
-    transition-delay: 0.5s;
+    transition: 0.5s;
+    transition-delay: 0.05s;
 }
 
 div.crea
 {
     position: relative;
-    left: 400px;
+    left: 385px;
     border: 3px  solid rgb(182, 91, 194);
     border-radius: 5px;
     background:linear-gradient(30deg, cornsilk,white, seashell, cornsilk, whitesmoke);
     box-shadow: 10px 10px 5px 1px rgba(0.5, 0.5, 0.2, 0.2);
-    width: 580px;
+    width: 590px;
     background-color:rgb(198, 158, 224);
     text-align: center
 }
 
 div.crea:hover {
-    padding: 0;
+    padding: 1px;
     box-shadow: 15px 15px 10px 2px rgba(0.5, 0.5, 0.2, 0.2);
     transition: 0.5s;
     transition-delay: 0.05s;
@@ -214,17 +210,17 @@ div.crea:hover {
 div.edit
 {
     position: relative;
-    left: 400px;
+    left: 385px;
     border: 3px  solid rgb(83, 86, 235);
     border-radius: 5px;
-    width: 580px;
+    width: 590px;
     background:linear-gradient(30deg, cornsilk,white, seashell, cornsilk, whitesmoke);
     box-shadow: 10px 10px 5px 1px rgba(0.5, 0.5, 0.2, 0.2);
     text-align: center
 }
 
 div.edit:hover {
-    padding: 0;
+    padding: 1px;
     box-shadow: 15px 15px 10px 2px rgba(0.5, 0.5, 0.2, 0.2);
     transition: 0.5s;
     transition-delay: 0.05s;

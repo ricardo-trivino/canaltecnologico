@@ -190,7 +190,7 @@
                             formControlName="textTUPersona"></label>
                     <br><br>
                 </li>
-                <button type="submit">Insertar persona</button>
+                <button type="submit" onclick="location.reload()">Insertar persona</button>
             </form>
             <br><br>
 
@@ -215,11 +215,6 @@
                 <button type="submit">Buscar persona a editar</button>
                 <h2>{{TituloPersonaEdit}}</h2>
                 <ul *ngFor="let Per of MiPersonaE">
-                    <!--Nuevo tipo de identificación persona
-                    <label for="TIPersona"><input type="text" name="TIPersona" id="TIPersona"
-                            value={{Per.tipo_identificacion}} [(ngModel)]="Per.tipo_identificacion"
-                            formControlName="textnuevotipersona"></label>
-                    <br><br>-->
                     <form (ngSubmit)="buscarTipoId()" [formGroup]="filtrarTipoId">
                         Nuevo tipo identificación persona
                         <select class="opc2" formControlName="combofiltroid" (click)="consultaTiposId(2)">
@@ -277,10 +272,6 @@
                             value={{Per.direccion_persona}} [(ngModel)]="Per.direccion_persona"
                             formControlName="textnuevodpersona"></label>
                     <br><br>
-                    <!--Nuevo tipo usuario persona
-                    <label for="TUPersona"><input type="text" name="TUPersona" id="TUPersona" value={{Per.tipo_usuario}}
-                            [(ngModel)]="Per.tipo_usuario" formControlName="textnuevotupersona"></label>
-                    <br><br>-->
                     <form (ngSubmit)="buscarTipoUs()" [formGroup]="filtrarTipoUs">
                         Nuevo tipo usuario persona
                         <select class="opcB" formControlName="combofiltro" (click)="consultaTiposUs(2)">
@@ -301,7 +292,7 @@
                     </li>
                 </ul>
                 <br><br>
-                <button (click)="ActualizarPersona()">Actualizar</button>
+                <button (click)="ActualizarPersona()" onclick="location.reload()">Actualizar</button>
             </form>
             <br>
 

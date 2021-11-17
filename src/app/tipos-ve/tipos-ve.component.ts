@@ -55,7 +55,7 @@ export class TiposVeComponent implements OnInit {
       Router: Router
     ) { }
 
-  //Consultar todos los tipos de usuario
+  //Consultar todos los tipos de vehículo
   public consultaTiposVe(op: any) {
 
     if (this.controlLista == 1) {
@@ -101,7 +101,7 @@ export class TiposVeComponent implements OnInit {
 
   }
 
-  //Buscar un tipo de usuario por su id
+  //Buscar un tipo de vehículo por su id
   public buscarTipoVe() {
 
     var filtrovalor = this.filtrarTipoVe.getRawValue()['combofiltro'];
