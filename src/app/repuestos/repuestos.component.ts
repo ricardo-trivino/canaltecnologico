@@ -28,12 +28,29 @@ export class RepuestosComponent implements OnInit {
   MiRepuestoE: any = []; //Tipo de usuario a editar
   comboEditarRepuesto: any = []; //Combo editar tipo de usuario
 
+  TiposRe: any = []; //Lista de tipos de usuario
+  TituloTiposRe = ""; //Titulo lista de tipos de usuario
+  TablaTiposRe: any = []; //Encabezados tabla lista de tipos de usuario
+
+  TituloTipoRe = ""; //Titulo del tipo de id buscado
+  MiTipoRe: any = []; //Tipo de usuario buscado
+  TabBusTiposRe: any = []; //Encabezados tabla tipo de usuario Buscado
+  comboListaTipoRe: any = [];
+
+  TituloTipoReEdit = ""; //Titulo de tipo de usuario a editar
+  MiTipoReE: any = []; //Tipo de usuario a editar
+  comboEditarTipoRe: any = []; //Combo editar tipo de usuario
+
   //Form group 
   ListaRepuestos = new FormGroup(
     {
 
     });
   filtrarRepuesto = new FormGroup(
+    {
+      combofiltro: new FormControl()
+    });
+  filtrarTipoRe = new FormGroup(
     {
       combofiltro: new FormControl()
     });
@@ -101,6 +118,44 @@ export class RepuestosComponent implements OnInit {
 
   }
 
+  //Consultar todos los tipos de repuesto
+  public consultaTiposRe(op: any) {
+
+    if (this.controlLista == 1) {
+      this.servi.getTiposRe().subscribe((data: any) => {
+        if (op == 1) {
+          let dat = data;
+          this.TiposRe = data;
+          this.TituloTiposRe = "LISTA DE TIPOS DE REPUESTO";
+          this.TablaTiposRe[0] = "Indicador";
+          this.TablaTiposRe[1] = "Denominación";
+        }
+        else if (op == 2) {
+          this.comboListaTipoRe = data;
+          this.MiTipoRe = null;
+          this.TituloTipoRe = "";
+          this.TabBusTiposRe[0] = "";
+          this.TabBusTiposRe[1] = "";
+        }
+        else if (op == 3) {
+          this.comboEditarTipoRe = data;
+          this.MiTipoReE = null;
+          this.TituloTipoReEdit = "";
+        }
+      },
+        error => { console.error(error + " ") });
+    }
+    else {
+      this.TiposRe = null;
+      this.TituloTiposRe = "";
+      this.TablaTiposRe[0] = "";
+      this.TablaTiposRe[1] = "";
+      this.controlLista = 1;
+    }
+
+  }
+
+
   //Limpiar la lista
   public LimpiarLista() {
 
@@ -119,6 +174,20 @@ export class RepuestosComponent implements OnInit {
       this.TabBusRepuestos[1] = "Código";
       this.TabBusRepuestos[2] = "Tipo";
       this.TabBusRepuestos[3] = "Cantidad";
+    },
+      error => { console.log(error) });
+
+  }
+
+  //Buscar un tipo de usuario por su id
+  public buscarTipoRe() {
+
+    var filtrovalor = this.filtrarTipoRe.getRawValue()['combofiltro'];
+    this.servi.getTipoRe('/' + filtrovalor).subscribe((data: {}) => {
+      this.MiTipoRe = data;
+      this.TituloTipoRe = "TIPO DE REPUESTO SELECCIONADO";
+      this.TabBusTiposRe[0] = "Indicador";
+      this.TabBusTiposRe[1] = "Denominación";
     },
       error => { console.log(error) });
 
@@ -197,6 +266,10 @@ export class RepuestosComponent implements OnInit {
 
       });
     this.filtrarRepuesto = this.formBuilder.group(
+      {
+        combofiltro: []
+      });
+    this.filtrarTipoRe = this.formBuilder.group(
       {
         combofiltro: []
       });

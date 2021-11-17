@@ -55,7 +55,7 @@ export class TiposReComponent implements OnInit {
       Router: Router
     ) { }
 
-  //Consultar todos los tipos de usuario
+  //Consultar todos los tipos de repuesto
   public consultaTiposRe(op: any) {
 
     if (this.controlLista == 1) {
@@ -66,7 +66,6 @@ export class TiposReComponent implements OnInit {
           this.TituloTiposRe = "LISTA DE TIPOS DE REPUESTO";
           this.TablaTiposRe[0] = "Indicador";
           this.TablaTiposRe[1] = "Denominación";
-          //this.TablaTiposId[2] = "Iniciales";
         }
         else if (op == 2) {
           this.comboListaTipoRe = data;
@@ -88,7 +87,6 @@ export class TiposReComponent implements OnInit {
       this.TituloTiposRe = "";
       this.TablaTiposRe[0] = "";
       this.TablaTiposRe[1] = "";
-      //this.TablaTiposId[2] = "";
       this.controlLista = 1;
     }
 

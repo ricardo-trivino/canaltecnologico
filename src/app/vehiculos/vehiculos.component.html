@@ -204,7 +204,7 @@
                             formControlName="textnuevopvehiculo"></label>
                     <br><br>
                     <form (ngSubmit)="buscarMarcaVe()" [formGroup]="filtrarMarcaVe">
-                        Nueva marca Vehículo
+                        Nueva marca vehículo
                         <select class="opc" formControlName="combofiltro" (click)="consultaMarcasVe(2)">
                             <option value="value1">Marca vehículo</option>
                             <option *ngFor="let MarcaVe of comboListaMarcaVe" [value]="MarcaVe.id_marca_vehiculo">
@@ -250,7 +250,7 @@
                         <br><br>
                     </li>
                     <form (ngSubmit)="buscarPersona()" [formGroup]="filtrarPersona">
-                        Cliente
+                        Nuevo cliente
                         <select class="opc" formControlName="combofiltro" (click)="consultaPersonas(2)">
                             <option value="value1">Cliente</option>
                             <option *ngFor="let Persona of comboListaPersona" [value]="Persona.id_persona">

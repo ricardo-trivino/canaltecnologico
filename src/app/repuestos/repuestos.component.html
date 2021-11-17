@@ -96,15 +96,29 @@
                 <label for="CORepuesto"><input type="text" name="CORepuesto" id="CORepuesto"
                         formControlName="textCORepuesto"></label>
                 <br><br>
-                Tipo repuesto
-                <label for="TRepuesto"><input type="text" name="TRepuesto" id="TRepuesto"
-                        formControlName="textTRepuesto"></label>
-                <br><br>
+                <form (ngSubmit)="buscarTipoRe()" [formGroup]="filtrarTipoRe">
+                    Tipo repuesto
+                    <select class="opc" formControlName="combofiltro" (click)="consultaTiposRe(2)">
+                        <option value="value1">Tipo repuesto</option>
+                        <option *ngFor="let TipoRe of comboListaTipoRe" [value]="TipoRe.id_tipo_repuesto">
+                            {{TipoRe.tipo_repuesto}}
+                        </option>
+                    </select>
+                    <button type="submit" class="special"></button>
+                    <br><br>
+                </form>
+                <li *ngFor="let Re of MiTipoRe">
+                    {{Re.tipo_repuesto}}
+                    <label for="TRepuesto" class="resultado"><input type="hidden" name="TRepuesto" id="TRepuesto"
+                            value={{Re.id_tipo_repuesto}} [(ngModel)]="Re.id_tipo_repuesto"
+                            formControlName="textTRepuesto"></label>
+                    <br><br>
+                </li>
                 Cantidad repuesto
                 <label for="CARepuesto"><input type="text" name="CARepuesto" id="CARepuesto"
                         formControlName="textCARepuesto"></label>
                 <br><br>
-                <button type="submit">Insertar repuesto</button>
+                <button type="submit" onclick="location.reload()">Insertar repuesto</button>
             </form>
             <br><br>
 
@@ -127,22 +141,38 @@
                 <br><br>
                 <button type="submit">Buscar repuesto a editar</button>
                 <h2>{{TituloRepuestoEdit}}</h2>
-                <li *ngFor="let Rep of MiRepuestoE">
+                <ul *ngFor="let Rep of MiRepuestoE">
                     Nuevo código repuesto
-                    <label for="CORepuesto"><input type="text" name="CORepuesto" id="CORepuesto" value={{Rep.cod_ref_repuesto}}
-                            [(ngModel)]="Rep.cod_ref_repuesto" formControlName="textnuevocorepuesto"></label>
+                    <label for="CORepuesto"><input type="text" name="CORepuesto" id="CORepuesto"
+                            value={{Rep.cod_ref_repuesto}} [(ngModel)]="Rep.cod_ref_repuesto"
+                            formControlName="textnuevocorepuesto"></label>
                     <br><br>
-                    Nuevo tipo repuesto
-                    <label for="TRepuesto"><input type="text" name="TRepuesto" id="TRepuesto" value={{Rep.tipo_repuesto}}
-                            [(ngModel)]="Rep.tipo_repuesto" formControlName="textnuevotrepuesto"></label>
-                    <br><br>
+                    <form (ngSubmit)="buscarTipoRe()" [formGroup]="filtrarTipoRe">
+                        Nuevo tipo repuesto
+                        <select class="opc" formControlName="combofiltro" (click)="consultaTiposRe(2)">
+                            <option value="value1">Tipo repuesto</option>
+                            <option *ngFor="let TipoRe of comboListaTipoRe" [value]="TipoRe.id_tipo_repuesto">
+                                {{TipoRe.tipo_repuesto}}
+                            </option>
+                        </select>
+                        <button type="submit" class="special"></button>
+                        <br><br>
+                    </form>
+                    <li *ngFor="let Re of MiTipoRe">
+                        {{Re.tipo_repuesto}}
+                        <label for="TRepuesto" class="resultado"><input type="hidden" name="TRepuesto" id="TRepuesto"
+                                value={{Re.id_tipo_repuesto}} [(ngModel)]="Re.id_tipo_repuesto"
+                                formControlName="textnuevotrepuesto"></label>
+                        <br><br>
+                    </li>
                     Nueva cantidad repuesto
-                    <label for="CARepuesto"><input type="text" name="CARepuesto" id="CARepuesto" value={{Rep.cantidad_repuesto}}
-                            [(ngModel)]="Rep.cantidad_repuesto" formControlName="textnuevocarepuesto"></label>
+                    <label for="CARepuesto"><input type="text" name="CARepuesto" id="CARepuesto"
+                            value={{Rep.cantidad_repuesto}} [(ngModel)]="Rep.cantidad_repuesto"
+                            formControlName="textnuevocarepuesto"></label>
                     <br><br>
-                </li>
+                    </ul>
                 <br><br>
-                <button (click)="ActualizarRepuesto()">Actualizar</button>
+                <button (click)="ActualizarRepuesto()" onclick="location.reload()">Actualizar</button>
             </form>
             <br>
 
