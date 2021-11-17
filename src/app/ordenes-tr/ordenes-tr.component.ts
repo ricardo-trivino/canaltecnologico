@@ -11,6 +11,15 @@ import { ServicioTecnologicoService } from '../servicio-tecnologico.service';
 })
 export class OrdenesTrComponent implements OnInit {
 
+  Informes: any = []; //Lista de tipos de usuario
+  TituloInformes = ""; //Titulo lista de tipos de usuario
+  TablaInformes: any = []; //Encabezados tabla lista de tipos de usuario
+
+  TituloInforme = ""; //Titulo del tipo de id buscado
+  MiInforme: any = []; //Tipo de usuario buscado
+  TabBusInformes: any = []; //Encabezados tabla tipo de usuario Buscado
+  comboListaInforme: any = [];
+
   OrdenesTr: any = []; //Lista de tipos de usuario
   TituloOrdenesTr = ""; //Titulo lista de tipos de usuario
   TablaOrdenesTr: any = []; //Encabezados tabla lista de tipos de usuario
@@ -128,6 +137,13 @@ export class OrdenesTrComponent implements OnInit {
       textnuevoprordentr: new FormControl(),
       textnuevofeordentr: new FormControl()
     });
+  Informe = new FormGroup(
+    {
+      mecanicoorden: new FormControl(),
+      fechainiinforme: new FormControl(),
+      fechafininforme: new FormControl()
+    }
+  )
 
   constructor
     (
@@ -520,6 +536,28 @@ export class OrdenesTrComponent implements OnInit {
       });
     this.InsertarGOrdenTr.reset();
 
+  }
+
+  //Generar informe
+  public GenerarInforme() {
+    var mec = this.Informe.getRawValue()['mecanicoorden'];
+    var fi = this.Informe.getRawValue()['fechainiinforme'];
+    var ff = this.Informe.getRawValue()['fechafininforme'];
+
+    this.servi.getInforme('/' + mec, fi, ff).subscribe((data: {}) => {
+      this.MiInforme = data;
+      this.TituloInforme = "INFORME";
+      this.TabBusInformes[0] = "Indicador";
+      this.TabBusInformes[1] = "Vehículo";
+      this.TabBusInformes[2] = "Número orden";
+      this.TabBusInformes[3] = "Repuesto";
+      this.TabBusInformes[4] = "CC Mecánico";
+      this.TabBusInformes[5] = "Descripción";
+      this.TabBusInformes[6] = "Forma de pago";
+      this.TabBusInformes[7] = "Precio";
+      this.TabBusInformes[8] = "Fecha";
+    },
+      error => { console.log(error) });
   }
 
   //Buscar una orden de trabajo por su id para editarla

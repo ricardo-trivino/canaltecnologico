@@ -372,12 +372,12 @@ export class ServicioTecnologicoService {
 
   }
 
-  /*// Método mostrar informe de ordenes de trabajo por mecánico
-  getInforme(id: any): Observable<any> {
+  // Método mostrar informe de ordenes de trabajo por mecánico
+  getInforme(id: any,  fecha_inicial: any, fecha_final: any): Observable<any> {
 
-    return this.http.get(this.Url + "/ordtrab" + id + fecha_inicial + fecha_final, httpOptions);
+    return this.http.get(this.Url + "/ordtrab" + id + "/" + fecha_inicial + "/" + fecha_final, httpOptions);
 
-  }*/
+  }
 
   // Método para insertar una orden de trabajo
   async insertOrdTrab(OrdenTrD: any): Promise<any> {
