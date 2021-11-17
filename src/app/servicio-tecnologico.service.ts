@@ -301,4 +301,38 @@ export class ServicioTecnologicoService {
 
   }
 
+  //*****************************************************************************//
+
+  // Método listar de los repuestos
+  getRepuestos(): Observable<any> {
+
+    return this.http.get(this.Url + "/repuesto", httpOptions);
+
+  }
+
+  // Método mostrar un solo repuesto
+  getRepuesto(id: any): Observable<any> {
+
+    return this.http.get(this.Url + "/repuesto" + id, httpOptions);
+
+  }
+
+  // Método para insertar un repuesto
+  async insertRepuesto(VehiculoD: any): Promise<any> {
+
+    return new Promise((resolve, reject) => {
+      this.http.post(this.Url + "/repuesto", VehiculoD, httpOptions).toPromise()
+    });
+
+  }
+
+  // Método para modificar un repuesto
+  async updateRepuesto(cadena: any): Promise<any> {
+
+    return new Promise((resolve, reject) => {
+      this.http.put(this.Url + "/repuesto", cadena, httpOptions).toPromise()
+    });
+
+  }
+
 }

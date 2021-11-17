@@ -113,7 +113,6 @@
                     <option value="value1">Tipo de repuesto a editar</option>
                     <option *ngFor="let TRe of comboEditarTipoRe" [value]="TRe.id_tipo_repuesto">
                         {{TRe.tipo_repuesto}}
-                        <!--{{TId.iniciales_tipo_identificacion}}-->
                     </option>
                 </select>
                 <br><br>
@@ -124,12 +123,6 @@
                     <label for="ETipoRe"><input type="text" name="ETipoRe" id="ETipoRe" value={{Re.tipo_repuesto}}
                             [(ngModel)]="Re.tipo_repuesto" formControlName="textnuevotipore"></label>
                     <br><br>
-                    <!--Nuevas iniciales tipo identificación
-                    <label for="InTipoId"><input type="text" name="InTipoId" id="InTipoId"
-                            value={{Id.iniciales_tipo_identificacion}} [(ngModel)]="Id.iniciales_tipo_identificacion"
-                            formControlName="textnuevoinicialestipoid"></label>
-
-                    <br><br>-->
                 </li>
                 <br><br>
                 <button (click)="ActualizarTipoRe()">Actualizar</button>

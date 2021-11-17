@@ -1,0 +1,162 @@
+<body>
+
+    <div class="encabezado">
+        <div class="adorno">
+            <div class="caja"></div>
+            <div class="caja"></div>
+        </div>
+        <a routerLink="/Inicio" class="enlace">Menú Inicio</a>
+        <div style="text-align:center" class="head">
+            <h1>
+                {{ title }}
+            </h1>
+            <img width="200" alt="Logo Proyecto" src="../assets/free-logo-i9r67fo4cz-4186t5au7q.jpg">
+        </div>
+    </div>
+
+    <div class="cuerpo">
+        <!--mostrar lista repuestos-->
+        <div class="lista">
+            <h2> Lista de los repuestos</h2>
+            <form (ngSubmit)="consultaRepuestos(1)" [formGroup]="ListaRepuestos">
+                <button type="submit" style="margin-right: 30px"> Mostrar lista de repuestos</button>
+                <button (click)="LimpiarLista()" style="scroll-margin-left: 30px"> Limpiar lista todos los
+                    repuestos</button>
+                <br><br>
+                <h2>{{TituloRepuestos}}</h2>
+                <table>
+                    <thead>
+                        <th>{{TablaRepuestos[0]}}</th>
+                        <th>{{TablaRepuestos[1]}}</th>
+                        <th>{{TablaRepuestos[2]}}</th>
+                        <th>{{TablaRepuestos[3]}}</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let rep of Repuestos">
+                            <th>{{rep.id_repuesto}}</th>
+                            <th>{{rep.cod_ref_repuesto}}</th>
+                            <th>{{rep.tipo_repuesto}}</th>
+                            <th>{{rep.cantidad_repuesto}}</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+        <br><br><br>
+
+        <!-- para mostrar un solo repuesto -->
+        <div class="buscar">
+
+            <h2>Mostrar el repuesto seleccionado: </h2>
+
+            <form (ngSubmit)="buscarRepuesto()" [formGroup]="filtrarRepuesto">
+                Repuesto a mostrar
+                <select class="dropdown" formControlName="combofiltro" (click)="consultaRepuestos(2)">
+                    <option value="value1">Repuesto a buscar</option>
+                    <option *ngFor="let Repuesto of comboListaRepuesto" [value]="Repuesto.id_repuesto">
+                        {{Repuesto.cod_ref_repuesto}}-
+                        {{Repuesto.cantidad_repuesto}}
+                    </option>
+                </select>
+                <br><br><br>
+                <button type="submit">Buscar repuesto</button>
+            </form>
+            <ul>
+                <h2>{{TituloRepuesto}}</h2>
+                <table class="tabBuscar">
+                    <thead class="Colb">
+                        <th class="b">{{TabBusRepuestos[0]}}</th>
+                        <th class="b">{{TabBusRepuestos[1]}}</th>
+                        <th class="b">{{TabBusRepuestos[2]}}</th>
+                        <th class="b">{{TabBusRepuestos[3]}}</th>
+                    </thead>
+
+                    <tbody class="Filb">
+                        <tr class="b" *ngFor="let rep of MiRepuesto">
+                            <th class="b">{{rep.id_repuesto}}</th>
+                            <th class="b">{{rep.cod_ref_repuesto}}</th>
+                            <th class="b">{{rep.tipo_repuesto}}</th>
+                            <th class="b">{{rep.cantidad_repuesto}}</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </ul>
+
+
+        </div>
+        <br><br><br>
+
+        <!-- para crear un repuesto -->
+        <div class="crea">
+
+            <h2>Registrar un nuevo repuesto</h2>
+
+            <form (ngSubmit)="InsertarRepuesto()" [formGroup]="InsertarGRepuesto">
+                Código repuesto
+                <label for="CORepuesto"><input type="text" name="CORepuesto" id="CORepuesto"
+                        formControlName="textCORepuesto"></label>
+                <br><br>
+                Tipo repuesto
+                <label for="TRepuesto"><input type="text" name="TRepuesto" id="TRepuesto"
+                        formControlName="textTRepuesto"></label>
+                <br><br>
+                Cantidad repuesto
+                <label for="CARepuesto"><input type="text" name="CARepuesto" id="CARepuesto"
+                        formControlName="textCARepuesto"></label>
+                <br><br>
+                <button type="submit">Insertar repuesto</button>
+            </form>
+            <br><br>
+
+        </div>
+        <br><br><br>
+
+        <!-- para actualizar un repuesto -->
+        <div class="edit">
+
+            <h2> Repuesto a editar</h2>
+            <form (ngSubmit)="buscarEditarRepuesto()" [formGroup]="ActualizarARepuesto">
+                Repuesto a editar:
+                <select class="dropdown" formControlName="BuscarIdRepuesto" (click)="consultaRepuestos(3)">
+                    <option value="value1">Repuesto a editar</option>
+                    <option *ngFor="let Rep of comboEditarRepuesto" [value]="Rep.id_repuesto">
+                        {{Rep.cod_ref_repuesto}}-
+                        {{Rep.cantidad_repuesto}}
+                    </option>
+                </select>
+                <br><br>
+                <button type="submit">Buscar repuesto a editar</button>
+                <h2>{{TituloRepuestoEdit}}</h2>
+                <li *ngFor="let Rep of MiRepuestoE">
+                    Nuevo código repuesto
+                    <label for="CORepuesto"><input type="text" name="CORepuesto" id="CORepuesto" value={{Rep.cod_ref_repuesto}}
+                            [(ngModel)]="Rep.cod_ref_repuesto" formControlName="textnuevocorepuesto"></label>
+                    <br><br>
+                    Nuevo tipo repuesto
+                    <label for="TRepuesto"><input type="text" name="TRepuesto" id="TRepuesto" value={{Rep.tipo_repuesto}}
+                            [(ngModel)]="Rep.tipo_repuesto" formControlName="textnuevotrepuesto"></label>
+                    <br><br>
+                    Nueva cantidad repuesto
+                    <label for="CARepuesto"><input type="text" name="CARepuesto" id="CARepuesto" value={{Rep.cantidad_repuesto}}
+                            [(ngModel)]="Rep.cantidad_repuesto" formControlName="textnuevocarepuesto"></label>
+                    <br><br>
+                </li>
+                <br><br>
+                <button (click)="ActualizarRepuesto()">Actualizar</button>
+            </form>
+            <br>
+
+        </div>
+        <br><br><br>
+    </div>
+
+    <footer>
+        <!-- Generated by https://smooth.ie/blogs/news/svg-wavey-transitions-between-sections -->
+        <div style="height: 150px; overflow: hidden;"><svg viewBox="0 0 500 150" preserveAspectRatio="none"
+                style="height: 100%; width: 100%;">
+                <path d="M0.28,4.45 C75.33,37.98 58.41,126.80 200.80,150.00 L0.00,150.00 L-18.34,-8.38 Z"
+                    style="stroke: none; fill: #08f;"></path>
+            </svg></div>
+    </footer>
+
+</body>

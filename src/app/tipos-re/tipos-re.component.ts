@@ -186,4 +186,3 @@ export class TiposReComponent implements OnInit {
   }
 
 }
-

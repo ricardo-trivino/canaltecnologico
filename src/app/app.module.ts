@@ -20,6 +20,7 @@ import { MarcasVeComponent } from './marcas-ve/marcas-ve.component';
 import { FormasPaComponent } from './formas-pa/formas-pa.component';
 import { PersonasComponent } from './personas/personas.component';
 import { VehiculosComponent } from './vehiculos/vehiculos.component';
+import { RepuestosComponent } from './repuestos/repuestos.component';
 
 //========================================================================
 const appRoutes: Routes =
@@ -64,6 +65,10 @@ const appRoutes: Routes =
     {
       path: 'Vehiculo',
       component: VehiculosComponent,
+    },
+    {
+      path: 'Repuesto',
+      component: RepuestosComponent,
     }
   ]
 
@@ -80,7 +85,8 @@ const appRoutes: Routes =
     MarcasVeComponent,
     FormasPaComponent,
     PersonasComponent,
-    VehiculosComponent
+    VehiculosComponent,
+    RepuestosComponent
   ],
   imports: [
     BrowserModule,
