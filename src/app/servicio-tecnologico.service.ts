@@ -331,6 +331,13 @@ export class ServicioTecnologicoService {
 
   }
 
+  /*// Método mostrar informe de ordenes de trabajo por mecánico
+  getInforme(id: any): Observable<any> {
+
+    return this.http.get(this.Url + "/repuesto" + id + fecha_inicial + fecha_final, httpOptions);
+
+  }*/
+
   // Método para insertar un repuesto
   async insertRepuesto(RepuestoD: any): Promise<any> {
 
@@ -364,6 +371,13 @@ export class ServicioTecnologicoService {
     return this.http.get(this.Url + "/ordtrab" + id, httpOptions);
 
   }
+
+  /*// Método mostrar informe de ordenes de trabajo por mecánico
+  getInforme(id: any): Observable<any> {
+
+    return this.http.get(this.Url + "/ordtrab" + id + fecha_inicial + fecha_final, httpOptions);
+
+  }*/
 
   // Método para insertar una orden de trabajo
   async insertOrdTrab(OrdenTrD: any): Promise<any> {
