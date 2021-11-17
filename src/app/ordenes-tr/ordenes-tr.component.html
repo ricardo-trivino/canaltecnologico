@@ -112,30 +112,102 @@
             <h2>Registrar una nueva orden de trabajo</h2>
 
             <form (ngSubmit)="InsertarOrdenTr()" [formGroup]="InsertarGOrdenTr">
-                Vehículo orden de trabajo
+                <!--Vehículo orden de trabajo
                 <label for="VeOrdenTr"><input type="text" name="VeOrdenTr" id="VeOrdenTr"
                         formControlName="textVeOrdenTr"></label>
-                <br><br>
+                <br><br>-->
+                <form (ngSubmit)="buscarVehiculo()" [formGroup]="filtrarVehiculo">
+                    Vehículo orden de trabajo
+                    <select class="opc" formControlName="combofiltro" (click)="consultaVehiculos(2)">
+                        <option value="value1">Vehículo</option>
+                        <option *ngFor="let Vehiculo of comboListaVehiculo" [value]="Vehiculo.id_vehiculo">
+                            {{Vehiculo.placa_vehiculo}}
+                        </option>
+                    </select>
+                    <button type="submit" class="special"></button>
+                    <br><br>
+                </form>
+                <li *ngFor="let Ve of MiVehiculo">
+                    {{Ve.placa_vehiculo}}
+                    <label for="Vehiculo" class="resultado"><input type="hidden" name="Vehiculo" id="Vehiculo"
+                            value={{Ve.id_vehiculo}} [(ngModel)]="Ve.id_vehiculo"
+                            formControlName="textVeOrdenTr"></label>
+                    <br><br>
+                </li>
                 Número orden de trabajo
                 <label for="NuOrdenTr"><input type="text" name="NuOrdenTr" id="NuOrdenTr"
                         formControlName="textNuOrdenTr"></label>
                 <br><br>
-                Repuesto orden de trabajo
+                <!--Repuesto orden de trabajo
                 <label for="ReOrdenTr"><input type="text" name="ReOrdenTr" id="ReOrdenTr"
                         formControlName="textReOrdenTr"></label>
-                <br><br>
-                Mecánico orden de trabajo
+                <br><br>-->
+                <form (ngSubmit)="buscarRepuesto()" [formGroup]="filtrarRepuesto">
+                    Repuesto orden de trabajo
+                    <select class="opc" formControlName="combofiltro" (click)="consultaRepuestos(2)">
+                        <option value="value1">Repuesto</option>
+                        <option *ngFor="let Repuesto of comboListaRepuesto" [value]="Repuesto.id_repuesto">
+                            {{Repuesto.cod_ref_repuesto}}
+                        </option>
+                    </select>
+                    <button type="submit" class="special"></button>
+                    <br><br>
+                </form>
+                <li *ngFor="let Re of MiRepuesto">
+                    {{Re.cod_ref_repuesto}}
+                    <label for="Repuesto" class="resultado"><input type="hidden" name="Repuesto" id="Repuesto"
+                            value={{Re.id_repuesto}} [(ngModel)]="Re.id_repuesto"
+                            formControlName="textReOrdenTr"></label>
+                    <br><br>
+                </li>
+                <!--Mecánico orden de trabajo
                 <label for="MeOrdenTr"><input type="text" name="MeOrdenTr" id="MeOrdenTr"
                         formControlName="textMeOrdenTr"></label>
-                <br><br>
+                <br><br>-->
+                <form (ngSubmit)="buscarPersona()" [formGroup]="filtrarPersona">
+                    Mecánico orden de trabajo
+                    <select class="opc" formControlName="combofiltro" (click)="consultaPersonas(2)">
+                        <option value="value1">Mecánico</option>
+                        <option *ngFor="let Persona of comboListaPersona" [value]="Persona.id_persona">
+                            {{Persona.identificacion_persona}}
+                        </option>
+                    </select>
+                    <button type="submit" class="special"></button>
+                    <br><br>
+                </form>
+                <li *ngFor="let Pe of MiPersona">
+                    {{Pe.identificacion_persona}}
+                    <label for="Persona" class="resultado"><input type="hidden" name="Persona" id="Persona"
+                            value={{Pe.id_persona}} [(ngModel)]="Pe.id_persona"
+                            formControlName="textMeOrdenTr"></label>
+                    <br><br>
+                </li>
                 Descripción orden de trabajo
                 <label for="DeOrdenTr"><input type="text" name="DeOrdenTr" id="DeOrdenTr"
                         formControlName="textDeOrdenTr"></label>
                 <br><br>
-                Forma de pago orden de trabajo
+                <!--Forma de pago orden de trabajo
                 <label for="FPOrdenTr"><input type="text" name="FPOrdenTr" id="FPOrdenTr"
                         formControlName="textFPOrdenTr"></label>
-                <br><br>
+                <br><br>-->
+                <form (ngSubmit)="buscarFormaPa()" [formGroup]="filtrarFormaPa">
+                    Forma de pago orden de trabajo
+                    <select class="opc" formControlName="combofiltro" (click)="consultaFormasPa(2)">
+                        <option value="value1">Forma de pago</option>
+                        <option *ngFor="let FormaPa of comboListaFormaPa" [value]="FormaPa.id_forma_pago">
+                            {{FormaPa.forma_pago}}
+                        </option>
+                    </select>
+                    <button type="submit" class="special"></button>
+                    <br><br>
+                </form>
+                <li *ngFor="let FP of MiFormaPa">
+                    {{FP.forma_pago}}
+                    <label for="FormaPa" class="resultado"><input type="hidden" name="FormaPa" id="FormaPa"
+                            value={{FP.id_forma_pago}} [(ngModel)]="FP.id_forma_pago"
+                            formControlName="textFPOrdenTr"></label>
+                    <br><br>
+                </li>
                 Precio orden de trabajo
                 <label for="PrOrdenTr"><input type="text" name="PrOrdenTr" id="PrOrdenTr"
                         formControlName="textPrOrdenTr"></label>
@@ -144,7 +216,7 @@
                 <label for="FeOrdenTr"><input type="date" name="FeOrdenTr" id="FeOrdenTr"
                         formControlName="textFeOrdenTr"></label>
                 <br><br>
-                <button type="submit">Insertar orden de trabajo</button>
+                <button type="submit" onclick="location.reload()">Insertar orden de trabajo</button>
             </form>
             <br><br>
 
@@ -167,37 +239,107 @@
                 <br><br>
                 <button type="submit">Buscar orden de trabajo a editar</button>
                 <h2>{{TituloOrdenTrEdit}}</h2>
-                <li *ngFor="let Ord of MiOrdenTrE">
-                    Nuevo vehículo
+                <ul *ngFor="let Ord of MiOrdenTrE">
+                    <!--Nuevo vehículo
                     <label for="VeOrdenTr"><input type="text" name="VeOrdenTr" id="VeOrdenTr"
                             value={{Ord.placa_vehiculo}} [(ngModel)]="Ord.placa_vehiculo"
                             formControlName="textnuevoveordentr"></label>
-                    <br><br>
+                    <br><br>-->
+                    <form (ngSubmit)="buscarVehiculo()" [formGroup]="filtrarVehiculo">
+                        Nuevo vehículo orden de trabajo
+                        <select class="opc" formControlName="combofiltro" (click)="consultaVehiculos(2)">
+                            <option value="value1">Vehículo</option>
+                            <option *ngFor="let Vehiculo of comboListaVehiculo" [value]="Vehiculo.id_vehiculo">
+                                {{Vehiculo.placa_vehiculo}}
+                            </option>
+                        </select>
+                        <button type="submit" class="special"></button>
+                        <br><br>
+                    </form>
+                    <li *ngFor="let Ve of MiVehiculo">
+                        {{Ve.placa_vehiculo}}
+                        <label for="Vehiculo" class="resultado"><input type="hidden" name="Vehiculo" id="Vehiculo"
+                                value={{Ve.id_vehiculo}} [(ngModel)]="Ve.id_vehiculo"
+                                formControlName="textnuevoveordentr"></label>
+                        <br><br>
+                    </li>
                     Nuevo número
                     <label for="NuOrdenTr"><input type="text" name="NuOrdenTr" id="NuOrdenTr"
                             value={{Ord.numero_orden_trabajo}} [(ngModel)]="Ord.numero_orden_trabajo"
                             formControlName="textnuevonuordentr"></label>
                     <br><br>
-                    Nuevo repuesto
+                    <!--Nuevo repuesto
                     <label for="ReOrdenTr"><input type="text" name="ReOrdenTr" id="ReOrdenTr"
                             value={{Ord.cod_ref_repuesto}} [(ngModel)]="Ord.cod_ref_repuesto"
                             formControlName="textnuevoreordentr"></label>
-                    <br><br>
-                    Nuevo mecánico
-                    <label for="MeOrdenTr"><input type="text" name="MeOrdenTr" id="MeOrdenTr"
-                            value={{Ord.CC_Mecanico}} [(ngModel)]="Ord.CC_Mecanico"
-                            formControlName="textnuevomeordentr"></label>
-                    <br><br>
+                    <br><br>-->
+                    <form (ngSubmit)="buscarRepuesto()" [formGroup]="filtrarRepuesto">
+                        Nuevo repuesto orden de trabajo
+                        <select class="opc" formControlName="combofiltro" (click)="consultaRepuestos(2)">
+                            <option value="value1">Repuesto</option>
+                            <option *ngFor="let Repuesto of comboListaRepuesto" [value]="Repuesto.id_repuesto">
+                                {{Repuesto.cod_ref_repuesto}}
+                            </option>
+                        </select>
+                        <button type="submit" class="special"></button>
+                        <br><br>
+                    </form>
+                    <li *ngFor="let Re of MiRepuesto">
+                        {{Re.cod_ref_repuesto}}
+                        <label for="Repuesto" class="resultado"><input type="hidden" name="Repuesto" id="Repuesto"
+                                value={{Re.id_repuesto}} [(ngModel)]="Re.id_repuesto"
+                                formControlName="textnuevoreordentr"></label>
+                        <br><br>
+                    </li>
+                    <!--Nuevo mecánico
+                    <label for="MeOrdenTr"><input type="text" name="MeOrdenTr" id="MeOrdenTr" value={{Ord.CC_Mecanico}}
+                            [(ngModel)]="Ord.CC_Mecanico" formControlName="textnuevomeordentr"></label>
+                    <br><br>-->
+                    <form (ngSubmit)="buscarPersona()" [formGroup]="filtrarPersona">
+                        Nuevo mecánico orden de trabajo
+                        <select class="opc" formControlName="combofiltro" (click)="consultaPersonas(2)">
+                            <option value="value1">Mecánico</option>
+                            <option *ngFor="let Persona of comboListaPersona" [value]="Persona.id_persona">
+                                {{Persona.identificacion_persona}}
+                            </option>
+                        </select>
+                        <button type="submit" class="special"></button>
+                        <br><br>
+                    </form>
+                    <li *ngFor="let Pe of MiPersona">
+                        {{Pe.identificacion_persona}}
+                        <label for="Persona" class="resultado"><input type="hidden" name="Persona" id="Persona"
+                                value={{Pe.id_persona}} [(ngModel)]="Pe.id_persona"
+                                formControlName="textnuevomeordentr"></label>
+                        <br><br>
+                    </li>
                     Nueva descripción
                     <label for="DeOrdenTr"><input type="text" name="DeOrdenTr" id="DeOrdenTr"
                             value={{Ord.descripcion_servicio_orden}} [(ngModel)]="Ord.descripcion_servicio_orden"
                             formControlName="textnuevodeordentr"></label>
                     <br><br>
-                    Nueva forma de pago
-                    <label for="FPOrdenTr"><input type="text" name="FPOrdenTr" id="FPOrdenTr"
-                            value={{Ord.forma_pago}} [(ngModel)]="Ord.forma_pago"
-                            formControlName="textnuevofpordentr"></label>
-                    <br><br>
+                    <!--Nueva forma de pago
+                    <label for="FPOrdenTr"><input type="text" name="FPOrdenTr" id="FPOrdenTr" value={{Ord.forma_pago}}
+                            [(ngModel)]="Ord.forma_pago" formControlName="textnuevofpordentr"></label>
+                    <br><br>-->
+                    <form (ngSubmit)="buscarFormaPa()" [formGroup]="filtrarFormaPa">
+                        Nueva forma de pago orden de trabajo
+                        <select class="opc" formControlName="combofiltro" (click)="consultaFormasPa(2)">
+                            <option value="value1">Forma de pago</option>
+                            <option *ngFor="let FormaPa of comboListaFormaPa" [value]="FormaPa.id_forma_pago">
+                                {{FormaPa.forma_pago}}
+                            </option>
+                        </select>
+                        <button type="submit" class="special"></button>
+                        <br><br>
+                    </form>
+                    <li *ngFor="let FP of MiFormaPa">
+                        {{FP.forma_pago}}
+                        <label for="FormaPa" class="resultado"><input type="hidden" name="FormaPa" id="FormaPa"
+                                value={{FP.id_forma_pago}} [(ngModel)]="FP.id_forma_pago"
+                                formControlName="textnuevofpordentr"></label>
+                        <br><br>
+                    </li>
                     Nuevo precio
                     <label for="PrOrdenTr"><input type="text" name="PrOrdenTr" id="PrOrdenTr"
                             value={{Ord.precio_orden_trabajo}} [(ngModel)]="Ord.precio_orden_trabajo"
@@ -208,9 +350,9 @@
                             value={{Ord.fecha_orden_trabajo}} [(ngModel)]="Ord.fecha_orden_trabajo"
                             formControlName="textnuevofeordentr"></label>
                     <br><br>
-                </li>
+                </ul>
                 <br><br>
-                <button (click)="ActualizarOrdenTr()">Actualizar</button>
+                <button (click)="ActualizarOrdenTr()" onclick="location.reload()">Actualizar</button>
             </form>
             <br>
 

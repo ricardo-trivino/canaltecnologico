@@ -228,10 +228,17 @@ export class ServicioTecnologicoService {
 
   }
 
-  // Método listar de las personas
+  // Método listar de los clientes
   getClientes(): Observable<any> {
 
     return this.http.get(this.Url + "/persona/cliente", httpOptions);
+
+  }
+
+  // Método listar de los mecánicos
+  getMecanicos(): Observable<any> {
+
+    return this.http.get(this.Url + "/persona/mecanico", httpOptions);
 
   }
 
@@ -242,10 +249,17 @@ export class ServicioTecnologicoService {
 
   }
 
-  // Método mostrar una sola persona
+  // Método mostrar un solo cliente
   getCliente(id: any): Observable<any> {
 
     return this.http.get(this.Url + "/persona/cliente" + id, httpOptions);
+
+  }
+
+  // Método mostrar un solo mecánico
+  getMecanico(id: any): Observable<any> {
+
+    return this.http.get(this.Url + "/persona/mecanico" + id, httpOptions);
 
   }
 
@@ -335,7 +349,7 @@ export class ServicioTecnologicoService {
 
   }
 
-    //*****************************************************************************//
+  //*****************************************************************************//
 
   // Método listar de las ordenes de trabajo
   getOrdsTrab(): Observable<any> {

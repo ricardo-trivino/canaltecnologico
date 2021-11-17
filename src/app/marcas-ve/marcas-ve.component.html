@@ -28,13 +28,11 @@
                     <thead>
                         <th>{{TablaMarcasVe[0]}}</th>
                         <th>{{TablaMarcasVe[1]}}</th>
-                        <!--<th>{{TablaTiposId[2]}}</th>-->
                     </thead>
                     <tbody>
                         <tr *ngFor="let mve of MarcasVe">
                             <th>{{mve.id_marca_vehiculo}}</th>
                             <th>{{mve.marca_vehiculo}}</th>
-                            <!--<th>{{tid.iniciales_tipo_identificacion}}</th>-->
                         </tr>
                     </tbody>
                 </table>
@@ -53,7 +51,6 @@
                     <option value="value1">Marca de vehículo a buscar</option>
                     <option *ngFor="let MarcaVe of comboListaMarcaVe" [value]="MarcaVe.id_marca_vehiculo">
                         {{MarcaVe.marca_vehiculo}}
-                        <!--{{TipoId.iniciales_tipo_identificacion}}-->
                     </option>
                 </select>
                 <br><br><br>
@@ -65,14 +62,12 @@
                     <thead class="Colb">
                         <th class="b">{{TabBusMarcasVe[0]}}</th>
                         <th class="b">{{TabBusMarcasVe[1]}}</th>
-                        <!--<th class="b">{{TabBusTiposId[2]}}</th>-->
                     </thead>
 
                     <tbody class="Filb">
                         <tr class="b" *ngFor="let mve of MiMarcaVe">
                             <th class="b">{{mve.id_marca_vehiculo}}</th>
                             <th class="b">{{mve.marca_vehiculo}}</th>
-                            <!--<th class="b">{{tid.iniciales_tipo_identificacion}}</th>-->
                         </tr>
                     </tbody>
                 </table>
@@ -92,10 +87,6 @@
                 <label for="CMarcaVe"><input type="text" name="CMarcaVe" id="CMarcaVe"
                         formControlName="textMarcaVe"></label>
                 <br><br>
-                <!--Iniciales nuevo tipo de identificación
-                <label for="InTipoId"><input type="text" name="InTipoId" id="InTipoId" formControlName="textIniTipoId"
-                        maxlength="3"></label>
-                <br><br>-->
                 <button type="submit">Insertar marca de vehículo</button>
             </form>
             <br><br>
@@ -113,7 +104,6 @@
                     <option value="value1">Marca de vehículo a editar</option>
                     <option *ngFor="let MVe of comboEditarMarcaVe" [value]="MVe.id_marca_vehiculo">
                         {{MVe.marca_vehiculo}}
-                        <!--{{TId.iniciales_tipo_identificacion}}-->
                     </option>
                 </select>
                 <br><br>
@@ -124,10 +114,6 @@
                     <label for="EMarcaVe"><input type="text" name="EMarcaVe" id="EMarcaVe" value={{Ve.marca_vehiculo}}
                             [(ngModel)]="Ve.marca_vehiculo" formControlName="textnuevamarcave"></label>
                     <br><br>
-                    <!--Nuevas iniciales tipo identificación
-                    <label for="InTipoId"><input type="text" name="InTipoId" id="InTipoId"
-                            value={{Id.iniciales_tipo_identificacion}} [(ngModel)]="Id.iniciales_tipo_identificacion"
-                            formControlName="textnuevoinicialestipoid"></label>
 
                     <br><br>-->
                 </li>

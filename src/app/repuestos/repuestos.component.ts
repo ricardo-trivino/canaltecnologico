@@ -75,7 +75,7 @@ export class RepuestosComponent implements OnInit {
       Router: Router
     ) { }
 
-  //Consultar todos los tipos de usuario
+  //Consultar todos los repuestos
   public consultaRepuestos(op: any) {
 
     if (this.controlLista == 1) {

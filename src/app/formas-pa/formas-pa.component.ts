@@ -55,7 +55,7 @@ export class FormasPaComponent implements OnInit {
       Router: Router
     ) { }
 
-  //Consultar todos los tipos de usuario
+  //Consultar todas las formas de pago
   public consultaFormasPa(op: any) {
 
     if (this.controlLista == 1) {
@@ -101,7 +101,7 @@ export class FormasPaComponent implements OnInit {
 
   }
 
-  //Buscar un tipo de usuario por su id
+  //Buscar una forma de pago por su id
   public buscarFormaPa() {
 
     var filtrovalor = this.filtrarFormaPa.getRawValue()['combofiltro'];
