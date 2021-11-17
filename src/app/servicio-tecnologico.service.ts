@@ -318,10 +318,10 @@ export class ServicioTecnologicoService {
   }
 
   // Método para insertar un repuesto
-  async insertRepuesto(VehiculoD: any): Promise<any> {
+  async insertRepuesto(RepuestoD: any): Promise<any> {
 
     return new Promise((resolve, reject) => {
-      this.http.post(this.Url + "/repuesto", VehiculoD, httpOptions).toPromise()
+      this.http.post(this.Url + "/repuesto", RepuestoD, httpOptions).toPromise()
     });
 
   }
@@ -331,6 +331,40 @@ export class ServicioTecnologicoService {
 
     return new Promise((resolve, reject) => {
       this.http.put(this.Url + "/repuesto", cadena, httpOptions).toPromise()
+    });
+
+  }
+
+    //*****************************************************************************//
+
+  // Método listar de las ordenes de trabajo
+  getOrdsTrab(): Observable<any> {
+
+    return this.http.get(this.Url + "/ordtrab", httpOptions);
+
+  }
+
+  // Método mostrar una sola orden de trabajo
+  getOrdTrab(id: any): Observable<any> {
+
+    return this.http.get(this.Url + "/ordtrab" + id, httpOptions);
+
+  }
+
+  // Método para insertar una orden de trabajo
+  async insertOrdTrab(OrdenTrD: any): Promise<any> {
+
+    return new Promise((resolve, reject) => {
+      this.http.post(this.Url + "/ordtrab", OrdenTrD, httpOptions).toPromise()
+    });
+
+  }
+
+  // Método para modificar una orden de trabajo
+  async updateOrdTrab(cadena: any): Promise<any> {
+
+    return new Promise((resolve, reject) => {
+      this.http.put(this.Url + "/ordtrab", cadena, httpOptions).toPromise()
     });
 
   }

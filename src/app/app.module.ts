@@ -21,6 +21,7 @@ import { FormasPaComponent } from './formas-pa/formas-pa.component';
 import { PersonasComponent } from './personas/personas.component';
 import { VehiculosComponent } from './vehiculos/vehiculos.component';
 import { RepuestosComponent } from './repuestos/repuestos.component';
+import { OrdenesTrComponent } from './ordenes-tr/ordenes-tr.component';
 
 //========================================================================
 const appRoutes: Routes =
@@ -69,6 +70,10 @@ const appRoutes: Routes =
     {
       path: 'Repuesto',
       component: RepuestosComponent,
+    },
+    {
+      path: 'Orden-Tr',
+      component: OrdenesTrComponent,
     }
   ]
 
@@ -86,7 +91,8 @@ const appRoutes: Routes =
     FormasPaComponent,
     PersonasComponent,
     VehiculosComponent,
-    RepuestosComponent
+    RepuestosComponent,
+    OrdenesTrComponent
   ],
   imports: [
     BrowserModule,

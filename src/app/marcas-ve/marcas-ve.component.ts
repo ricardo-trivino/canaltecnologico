@@ -45,7 +45,6 @@ export class MarcasVeComponent implements OnInit {
     {
       BuscarIdMarcaVe: new FormControl(),
       textnuevamarcave: new FormControl(),
-      //textnuevoinicialestipoid: new FormControl()
     });
 
   constructor
@@ -66,7 +65,6 @@ export class MarcasVeComponent implements OnInit {
           this.TituloMarcasVe = "LISTA DE MARCAS DE VEHÍCULO";
           this.TablaMarcasVe[0] = "Indicador";
           this.TablaMarcasVe[1] = "Denominación";
-          //this.TablaTiposId[2] = "Iniciales";
         }
         else if (op == 2) {
           this.comboListaMarcaVe = data;
@@ -88,7 +86,6 @@ export class MarcasVeComponent implements OnInit {
       this.TituloMarcasVe = "";
       this.TablaMarcasVe[0] = "";
       this.TablaMarcasVe[1] = "";
-      //this.TablaTiposId[2] = "";
       this.controlLista = 1;
     }
 
@@ -119,8 +116,7 @@ export class MarcasVeComponent implements OnInit {
   public InsertarMarcaVe() {
 
     var datosvalo2 = this.InsertarGMarcaVe.getRawValue()['textMarcaVe'];
-    //var datosvalo1 = this.InsertarGTipoId.getRawValue()['textIniTipoId'];
-    var cadena = { "marca_vehiculo": datosvalo2/*, "iniciales_tipo_id": datosvalo1*/ };
+    var cadena = { "marca_vehiculo": datosvalo2};
 
     this.servi.insertMarcaVe(cadena).then
       (res => {
@@ -155,9 +151,8 @@ export class MarcasVeComponent implements OnInit {
   public ActualizarMarcaVe() {
 
     var nuevamarcave = this.ActualizarAMarcaVe.getRawValue()['textnuevamarcave'];
-    //var nuevoinitipdoc = this.ActualizarATipoId.getRawValue()['textnuevoinicialestipoid'];
 
-    var cadena = { "id_marca_vehiculo": this.BuscarEvalor, "marca_vehiculo": nuevamarcave/*, "iniciales_tip_doc": nuevoinitipdoc*/ };
+    var cadena = { "id_marca_vehiculo": this.BuscarEvalor, "marca_vehiculo": nuevamarcave};
 
     this.servi.updateMarcaVe(cadena).then
       (
