@@ -331,12 +331,12 @@ export class ServicioTecnologicoService {
 
   }
 
-  /*// Método mostrar informe de ordenes de trabajo por mecánico
-  getInforme(id: any): Observable<any> {
+  // Método mostrar informe de repuestos por cliente y periodo de tiempo
+  getInformeCliente(id: any, fecha_inicial: any, fecha_final: any): Observable<any> {
 
-    return this.http.get(this.Url + "/repuesto" + id + fecha_inicial + fecha_final, httpOptions);
+    return this.http.get(this.Url + "/repuesto" + id + "/" + fecha_inicial + "/" + fecha_final, httpOptions);
 
-  }*/
+  }
 
   // Método para insertar un repuesto
   async insertRepuesto(RepuestoD: any): Promise<any> {
@@ -372,8 +372,8 @@ export class ServicioTecnologicoService {
 
   }
 
-  // Método mostrar informe de ordenes de trabajo por mecánico
-  getInforme(id: any,  fecha_inicial: any, fecha_final: any): Observable<any> {
+  // Método mostrar informe de ordenes de trabajo por mecánico y periodo de tiempo
+  getInformeMecanico(id: any, fecha_inicial: any, fecha_final: any): Observable<any> {
 
     return this.http.get(this.Url + "/ordtrab" + id + "/" + fecha_inicial + "/" + fecha_final, httpOptions);
 

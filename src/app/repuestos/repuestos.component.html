@@ -170,7 +170,7 @@
                             value={{Rep.cantidad_repuesto}} [(ngModel)]="Rep.cantidad_repuesto"
                             formControlName="textnuevocarepuesto"></label>
                     <br><br>
-                    </ul>
+                </ul>
                 <br><br>
                 <button (click)="ActualizarRepuesto()" onclick="location.reload()">Actualizar</button>
             </form>
@@ -178,6 +178,66 @@
 
         </div>
         <br><br><br>
+
+        <!-- para generar un informe de repuestos por cliente y periodo de tiempo -->
+        <div class="informe">
+            <h2> Informe de repuestos por cliente y periodo de tiempo </h2>
+            <form (ngSubmit)="GenerarInforme()" [formGroup]="Informe">
+                <form (ngSubmit)="buscarPersona()" [formGroup]="filtrarPersona">
+                    Cliente
+                    <select class="opc" formControlName="combofiltro" (click)="consultaPersonas(2)">
+                        <option value="value1">Cliente</option>
+                        <option *ngFor="let Persona of comboListaPersona" [value]="Persona.id_persona">
+                            {{Persona.identificacion_persona}}-
+                            {{Persona.p_nombre_persona}}-
+                            {{Persona.p_apellido_persona}}
+                        </option>
+                    </select>
+                    <button type="submit" class="special"></button>
+                    <br><br>
+                </form>
+                <li *ngFor="let Pe of MiPersona">
+                    {{Pe.identificacion_persona}}
+                    <label for="Persona" class="resultado"><input type="hidden" name="Persona" id="Persona"
+                            value={{Pe.id_persona}} [(ngModel)]="Pe.id_persona" formControlName="clienteorden"></label>
+                    <br><br>
+                </li>
+                Fecha inicial
+                <label for="FeInicial"><input type="date" name="FeInicial" id="FeInicial"
+                        formControlName="fechainiinforme"></label>
+                <br><br>
+                Fecha final
+                <label for="FeFinal"><input type="date" name="FeFinal" id="FeFinal"
+                        formControlName="fechafininforme"></label>
+                <br><br>
+                <button type="submit">Generar informe</button>
+                <ul>
+                    <h2>{{TituloInforme}}</h2>
+                    <table class="tabBuscar">
+                        <thead class="Colb">
+                            <th class="b">{{TabBusInformes[0]}}</th>
+                            <th class="b">{{TabBusInformes[1]}}</th>
+                            <th class="b">{{TabBusInformes[2]}}</th>
+                            <th class="b">{{TabBusInformes[3]}}</th>
+                            <th class="b">{{TabBusInformes[4]}}</th>
+                            <th class="b">{{TabBusInformes[5]}}</th>
+                        </thead>
+
+                        <tbody class="Filb">
+                            <tr class="b" *ngFor="let inf of MiInforme">
+                                <th class="b">{{inf.id_repuesto}}</th>
+                                <th class="b">{{inf.cod_ref_repuesto}}</th>
+                                <th class="b">{{inf.tipo_repuesto}}</th>
+                                <th class="b">{{inf.cantidad_repuesto}}</th>
+                                <th class="b">{{inf.CC_Cliente}}</th>
+                                <th class="b">{{inf.fecha_servicio}}</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </ul>
+            </form>
+        </div>
+
     </div>
 
     <footer>

@@ -544,7 +544,7 @@ export class OrdenesTrComponent implements OnInit {
     var fi = this.Informe.getRawValue()['fechainiinforme'];
     var ff = this.Informe.getRawValue()['fechafininforme'];
 
-    this.servi.getInforme('/' + mec, fi, ff).subscribe((data: {}) => {
+    this.servi.getInformeMecanico('/' + mec, fi, ff).subscribe((data: {}) => {
       this.MiInforme = data;
       this.TituloInforme = "INFORME";
       this.TabBusInformes[0] = "Indicador";
