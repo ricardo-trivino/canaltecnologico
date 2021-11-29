@@ -22,6 +22,7 @@ export class PersonasComponent implements OnInit {
   TablaTiposUs: any = []; //Encabezados tabla lista de tipos de usuario
 
   tiposDocumentos: any = []; //Vector que captura la data para el combo de los tipos de documentos
+  tiposUsuarios: any = []; //Vector que captura la data para el combo de los tipos de documentos
 
   TituloPersona = ""; //Titulo del tipo de id buscado
   TituloTipoId = ""; //Titulo del tipo de id buscado
@@ -386,6 +387,13 @@ export class PersonasComponent implements OnInit {
     this.servi.getExportTiposId().subscribe((data: { tiposdocumentos: [] }) => {
       this.tiposDocumentos = data;
       console.log(this.tiposDocumentos);
+    },
+      error => { console.error(error + " ") });
+
+    //se invoca el servicio y se carga el combobox de los tipos de usuarios
+    this.servi.getExportTiposUs().subscribe((data: { tiposusuarios: [] }) => {
+      this.tiposUsuarios = data;
+      console.log(this.tiposUsuarios);
     },
       error => { console.error(error + " ") });
 

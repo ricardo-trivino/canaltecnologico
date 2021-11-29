@@ -65,6 +65,13 @@ export class ServicioTecnologicoService {
 
   }
 
+  // Método listar de los tipos de usuario 
+  getExportTiposUs(): Observable<any> {
+
+    return this.http.get(this.Url + "/tipous", httpOptions);
+
+  }
+
   // Método mostrar un solo tipo de usuario
   getTipoUs(id: any): Observable<any> {
 
@@ -133,6 +140,13 @@ export class ServicioTecnologicoService {
 
   }
 
+  // Método listar de los tipos de vehículo 
+  getExportTiposVe(): Observable<any> {
+
+    return this.http.get(this.Url + "/tipove", httpOptions);
+
+  }
+
   // Método mostrar un solo tipo de vehículo
   getTipoVe(id: any): Observable<any> {
 
@@ -162,6 +176,13 @@ export class ServicioTecnologicoService {
 
   // Método listar de las marcas de vehículo 
   getMarcasVe(): Observable<any> {
+
+    return this.http.get(this.Url + "/marcave", httpOptions);
+
+  }
+
+  // Método listar de las marcas de vehículo 
+  getExportMarcasVe(): Observable<any> {
 
     return this.http.get(this.Url + "/marcave", httpOptions);
 
@@ -237,6 +258,13 @@ export class ServicioTecnologicoService {
 
   // Método listar de los clientes
   getClientes(): Observable<any> {
+
+    return this.http.get(this.Url + "/persona/cliente", httpOptions);
+
+  }
+
+  // Método listar de los clientes
+  getExportClientes(): Observable<any> {
 
     return this.http.get(this.Url + "/persona/cliente", httpOptions);
 

@@ -109,7 +109,7 @@
                 <label for="PVehiculo"><input type="text" name="PVehiculo" id="PVehiculo"
                         formControlName="textPVehiculo"></label>
                 <br><br>
-                <form (ngSubmit)="buscarMarcaVe()" [formGroup]="filtrarMarcaVe">
+                <!---<form (ngSubmit)="buscarMarcaVe()" [formGroup]="filtrarMarcaVe">
                     Marca Vehículo
                     <select class="opc" formControlName="combofiltro" (click)="consultaMarcasVe(2)">
                         <option value="value1">Marca vehículo</option>
@@ -126,7 +126,16 @@
                             value={{Ve.id_marca_vehiculo}} [(ngModel)]="Ve.id_marca_vehiculo"
                             formControlName="textMAVehiculo"></label>
                     <br><br>
-                </li>
+                </li>-->
+                Marca vehículo
+                <select formControlName="textMAVehiculo">
+                    <option value="">Selecciona una opción</option>
+                    <option *ngFor="let marcaVehiculo of marcasVehiculos"
+                        value="{{ marcaVehiculo.id_marca_vehiculo }}">
+                        {{ marcaVehiculo.marca_vehiculo }}
+                    </option>
+                </select>
+                <br><br>
                 Modelo vehículo
                 <label for="MOVehiculo"><input type="text" name="MOVehiculo" id="MOVehiculo"
                         formControlName="textMOVehiculo"></label>
@@ -135,7 +144,7 @@
                 <label for="COVehiculo"><input type="text" name="COVehiculo" id="COVehiculo"
                         formControlName="textCOVehiculo"></label>
                 <br><br>
-                <form (ngSubmit)="buscarTipoVe()" [formGroup]="filtrarTipoVe">
+                <!--<form (ngSubmit)="buscarTipoVe()" [formGroup]="filtrarTipoVe">
                     Tipo Vehículo
                     <select class="opc" formControlName="combofiltro" (click)="consultaTiposVe(2)">
                         <option value="value1">Tipo vehículo</option>
@@ -152,8 +161,17 @@
                             value={{Ve.id_tipo_vehiculo}} [(ngModel)]="Ve.id_tipo_vehiculo"
                             formControlName="textTVehiculo"></label>
                     <br><br>
-                </li>
-                <form (ngSubmit)="buscarPersona()" [formGroup]="filtrarPersona">
+                </li>-->
+                Tipo vehículo
+                <select formControlName="textTVehiculo">
+                    <option value="">Selecciona una opción</option>
+                    <option *ngFor="let tipoVehiculo of tiposVehiculos"
+                        value="{{ tipoVehiculo.id_tipo_vehiculo }}">
+                        {{ tipoVehiculo.tipo_vehiculo }}
+                    </option>
+                </select>
+                <br><br>
+                <!--<form (ngSubmit)="buscarPersona()" [formGroup]="filtrarPersona">
                     Cliente
                     <select class="opc" formControlName="combofiltro" (click)="consultaPersonas(2)">
                         <option value="value1">Cliente</option>
@@ -172,7 +190,16 @@
                             value={{Per.id_persona}} [(ngModel)]="Per.id_persona"
                             formControlName="textCLVehiculo"></label>
                     <br><br>
-                </li>
+                </li>-->
+                Cliente
+                <select formControlName="textCLVehiculo">
+                    <option value="">Selecciona una opción</option>
+                    <option *ngFor="let Cliente of Clientes"
+                        value="{{ Cliente.id_persona }}">
+                        {{ Cliente.identificacion_persona }}
+                    </option>
+                </select>
+                <br><br>
                 <button type="submit" onclick="location.reload()">Insertar vehículo</button>
             </form>
             <br><br>

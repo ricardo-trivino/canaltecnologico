@@ -32,6 +32,10 @@ export class VehiculosComponent implements OnInit {
   TituloMarcasVe = ""; //Titulo lista de tipos de usuario
   TablaMarcasVe: any = []; //Encabezados tabla lista de tipos de usuario
 
+  tiposVehiculos: any = [];
+  marcasVehiculos: any = [];
+  Clientes: any = [];
+
   TituloMarcaVe = ""; //Titulo de la marca buscada
   MiMarcaVe: any = []; //Tipo de usuario buscado
   TabBusMarcasVe: any = []; //Encabezados tabla tipo de usuario Buscado
@@ -461,6 +465,27 @@ export class VehiculosComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    //se invoca el servicio y se carga el combobox de los tipos de vehiculos
+    this.servi.getExportTiposVe().subscribe((data: { tiposusuarios: [] }) => {
+      this.tiposVehiculos = data;
+      console.log(this.tiposVehiculos);
+    },
+      error => { console.error(error + " ") });
+
+    //se invoca el servicio y se carga el combobox de las marcas de vehiculos
+    this.servi.getExportMarcasVe().subscribe((data: { tiposusuarios: [] }) => {
+      this.marcasVehiculos = data;
+      console.log(this.marcasVehiculos);
+    },
+      error => { console.error(error + " ") });
+
+    //se invoca el servicio y se carga el combobox de los clientes
+    this.servi.getExportClientes().subscribe((data: { clientes: [] }) => {
+      this.Clientes = data;
+      console.log(this.Clientes);
+    },
+      error => { console.error(error + " ") });
 
     this.ListaVehiculos = this.formBuilder.group(
       {
