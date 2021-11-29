@@ -274,25 +274,6 @@
         <div class="informe">
             <h2> Informe de ordenes de trabajo por mecánico y periodo de tiempo </h2>
             <form (ngSubmit)="GenerarInforme()" [formGroup]="Informe">
-                <!--<form (ngSubmit)="buscarPersona()" [formGroup]="filtrarPersona">
-                    Mecánico
-                    <select class="opc" formControlName="combofiltro" (click)="consultaPersonas(2)">
-                        <option value="value1">Mecánico</option>
-                        <option *ngFor="let Persona of comboListaPersona" [value]="Persona.id_persona">
-                            {{Persona.identificacion_persona}}-
-                            {{Persona.p_nombre_persona}}-
-                            {{Persona.p_apellido_persona}}
-                        </option>
-                    </select>
-                    <button type="submit" class="special"></button>
-                    <br><br>
-                </form>
-                <li *ngFor="let Pe of MiPersona">
-                    {{Pe.identificacion_persona}}
-                    <label for="Persona" class="resultado"><input type="hidden" name="Persona" id="Persona"
-                            value={{Pe.id_persona}} [(ngModel)]="Pe.id_persona" formControlName="mecanicoorden"></label>
-                    <br><br>
-                </li>-->
                 Mecánico
                 <select formControlName="mecanicoorden" (click)="consultaOrdenesTr(4)">
                     <option value="">Selecciona una opción</option>
