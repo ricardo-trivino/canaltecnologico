@@ -229,6 +229,13 @@ export class ServicioTecnologicoService {
 
   }
 
+  // Método listar de las formas de pago 
+  getExportFormasPa(): Observable<any> {
+
+    return this.http.get(this.Url + "/formapago", httpOptions);
+
+  }
+
   // Método mostrar un solo tipo de vehículo
   getFormaPa(id: any): Observable<any> {
 
@@ -284,6 +291,13 @@ export class ServicioTecnologicoService {
 
   }
 
+  // Método listar de los mecánicos
+  getExportMecanicos(): Observable<any> {
+
+    return this.http.get(this.Url + "/persona/mecanico", httpOptions);
+
+  }
+
   // Método mostrar una sola persona
   getPersona(id: any): Observable<any> {
 
@@ -332,6 +346,13 @@ export class ServicioTecnologicoService {
 
   }
 
+  // Método listar de los vehículos
+  getExportVehiculos(): Observable<any> {
+
+    return this.http.get(this.Url + "/vehiculo", httpOptions);
+
+  }
+
   // Método mostrar una sola persona
   getVehiculo(id: any): Observable<any> {
 
@@ -361,6 +382,13 @@ export class ServicioTecnologicoService {
 
   // Método listar de los repuestos
   getRepuestos(): Observable<any> {
+
+    return this.http.get(this.Url + "/repuesto", httpOptions);
+
+  }
+
+  // Método listar de los repuestos
+  getExportRepuestos(): Observable<any> {
 
     return this.http.get(this.Url + "/repuesto", httpOptions);
 

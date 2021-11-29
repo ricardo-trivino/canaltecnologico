@@ -41,6 +41,9 @@ export class OrdenesTrComponent implements OnInit {
   TituloVehiculos = ""; //Titulo lista de tipos de usuario
   TablaVehiculos: any = []; //Encabezados tabla lista de tipos de usuario
 
+  Mecanicos: any = []; //Vector que captura la data para el combo de los tipos de documentos
+  FormasPago: any = []; //Vector que captura la data para el combo de los tipos de documentos
+
   TituloVehiculo = ""; //Titulo del tipo de id buscado
   MiVehiculo: any = []; //Tipo de usuario buscado
   TabBusVehiculos: any = []; //Encabezados tabla tipo de usuario Buscado
@@ -613,6 +616,34 @@ export class OrdenesTrComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    //se invoca el servicio y se carga el combobox de los tipos de documentos
+    this.servi.getExportVehiculos().subscribe((data: { vehiculos: [] }) => {
+      this.Vehiculos = data;
+      console.log(this.Vehiculos);
+    },
+      error => { console.error(error + " ") });
+
+    //se invoca el servicio y se carga el combobox de los tipos de documentos
+    this.servi.getExportRepuestos().subscribe((data: { repuestos: [] }) => {
+      this.Repuestos = data;
+      console.log(this.Repuestos);
+    },
+      error => { console.error(error + " ") });
+
+    //se invoca el servicio y se carga el combobox de los tipos de documentos
+    this.servi.getExportMecanicos().subscribe((data: { mecanicos: [] }) => {
+      this.Mecanicos = data;
+      console.log(this.Mecanicos);
+    },
+      error => { console.error(error + " ") });
+
+    //se invoca el servicio y se carga el combobox de los tipos de documentos
+    this.servi.getExportFormasPa().subscribe((data: { formaspago: [] }) => {
+      this.FormasPago = data;
+      console.log(this.FormasPago);
+    },
+      error => { console.error(error + " ") });
 
     this.ListaOrdenesTr = this.formBuilder.group(
       {
