@@ -109,29 +109,10 @@
                 <label for="PVehiculo"><input type="text" name="PVehiculo" id="PVehiculo"
                         formControlName="textPVehiculo"></label>
                 <br><br>
-                <!---<form (ngSubmit)="buscarMarcaVe()" [formGroup]="filtrarMarcaVe">
-                    Marca Vehículo
-                    <select class="opc" formControlName="combofiltro" (click)="consultaMarcasVe(2)">
-                        <option value="value1">Marca vehículo</option>
-                        <option *ngFor="let MarcaVe of comboListaMarcaVe" [value]="MarcaVe.id_marca_vehiculo">
-                            {{MarcaVe.marca_vehiculo}}
-                        </option>
-                    </select>
-                    <button type="submit" class="special"></button>
-                    <br><br>
-                </form>
-                <li *ngFor="let Ve of MiMarcaVe">
-                    {{Ve.marca_vehiculo}}
-                    <label for="MAVehiculo" class="resultado"><input type="hidden" name="MAVehiculo" id="MAVehiculo"
-                            value={{Ve.id_marca_vehiculo}} [(ngModel)]="Ve.id_marca_vehiculo"
-                            formControlName="textMAVehiculo"></label>
-                    <br><br>
-                </li>-->
                 Marca vehículo
                 <select formControlName="textMAVehiculo">
                     <option value="">Selecciona una opción</option>
-                    <option *ngFor="let marcaVehiculo of marcasVehiculos"
-                        value="{{ marcaVehiculo.id_marca_vehiculo }}">
+                    <option *ngFor="let marcaVehiculo of marcasVehiculos" value="{{ marcaVehiculo.id_marca_vehiculo }}">
                         {{ marcaVehiculo.marca_vehiculo }}
                     </option>
                 </select>
@@ -144,59 +125,21 @@
                 <label for="COVehiculo"><input type="text" name="COVehiculo" id="COVehiculo"
                         formControlName="textCOVehiculo"></label>
                 <br><br>
-                <!--<form (ngSubmit)="buscarTipoVe()" [formGroup]="filtrarTipoVe">
-                    Tipo Vehículo
-                    <select class="opc" formControlName="combofiltro" (click)="consultaTiposVe(2)">
-                        <option value="value1">Tipo vehículo</option>
-                        <option *ngFor="let TipoVe of comboListaTipoVe" [value]="TipoVe.id_tipo_vehiculo">
-                            {{TipoVe.tipo_vehiculo}}
-                        </option>
-                    </select>
-                    <button type="submit" class="special"></button>
-                    <br><br>
-                </form>
-                <li *ngFor="let Ve of MiTipoVe">
-                    {{Ve.tipo_vehiculo}}
-                    <label for="TVehiculo" class="resultado"><input type="hidden" name="TVehiculo" id="TVehiculo"
-                            value={{Ve.id_tipo_vehiculo}} [(ngModel)]="Ve.id_tipo_vehiculo"
-                            formControlName="textTVehiculo"></label>
-                    <br><br>
-                </li>-->
                 Tipo vehículo
                 <select formControlName="textTVehiculo">
                     <option value="">Selecciona una opción</option>
-                    <option *ngFor="let tipoVehiculo of tiposVehiculos"
-                        value="{{ tipoVehiculo.id_tipo_vehiculo }}">
+                    <option *ngFor="let tipoVehiculo of tiposVehiculos" value="{{ tipoVehiculo.id_tipo_vehiculo }}">
                         {{ tipoVehiculo.tipo_vehiculo }}
                     </option>
                 </select>
                 <br><br>
-                <!--<form (ngSubmit)="buscarPersona()" [formGroup]="filtrarPersona">
-                    Cliente
-                    <select class="opc" formControlName="combofiltro" (click)="consultaPersonas(2)">
-                        <option value="value1">Cliente</option>
-                        <option *ngFor="let Persona of comboListaPersona" [value]="Persona.id_persona">
-                            {{Persona.identificacion_persona}}
-                        </option>
-                    </select>
-                    <button type="submit" class="special"></button>
-                    <br><br>
-                </form>
-                <li *ngFor="let Per of MiPersona">
-                    {{Per.identificacion_persona}}-
-                    {{Per.p_nombre_persona}}-
-                    {{Per.p_apellido_persona}}
-                    <label for="CLVehiculo" class="resultado"><input type="hidden" name="CLVehiculo" id="CLVehiculo"
-                            value={{Per.id_persona}} [(ngModel)]="Per.id_persona"
-                            formControlName="textCLVehiculo"></label>
-                    <br><br>
-                </li>-->
                 Cliente
                 <select formControlName="textCLVehiculo">
                     <option value="">Selecciona una opción</option>
-                    <option *ngFor="let Cliente of Clientes"
-                        value="{{ Cliente.id_persona }}">
-                        {{ Cliente.identificacion_persona }}
+                    <option *ngFor="let Cliente of Clientes" value="{{ Cliente.id_persona }}">
+                        {{ Cliente.identificacion_persona }} -
+                        {{ Cliente.p_nombre_persona }} -
+                        {{ Cliente.p_apellido_persona }}
                     </option>
                 </select>
                 <br><br>
@@ -230,24 +173,19 @@
                             value={{Veh.placa_vehiculo}} [(ngModel)]="Veh.placa_vehiculo"
                             formControlName="textnuevopvehiculo"></label>
                     <br><br>
-                    <form (ngSubmit)="buscarMarcaVe()" [formGroup]="filtrarMarcaVe">
-                        Nueva marca vehículo
-                        <select class="opc" formControlName="combofiltro" (click)="consultaMarcasVe(2)">
-                            <option value="value1">Marca vehículo</option>
-                            <option *ngFor="let MarcaVe of comboListaMarcaVe" [value]="MarcaVe.id_marca_vehiculo">
-                                {{MarcaVe.marca_vehiculo}}
-                            </option>
-                        </select>
-                        <button type="submit" class="special"></button>
-                        <br><br>
-                    </form>
-                    <li *ngFor="let Ve of MiMarcaVe">
-                        {{Ve.marca_vehiculo}}
-                        <label for="MAVehiculo" class="resultado"><input type="hidden" name="MAVehiculo" id="MAVehiculo"
-                                value={{Ve.id_marca_vehiculo}} [(ngModel)]="Ve.id_marca_vehiculo"
-                                formControlName="textnuevomavehiculo"></label>
-                        <br><br>
-                    </li>
+                    <span class="actual">
+                        Valor actual: {{Veh.marca_vehiculo}}
+                    </span>
+                    <br>
+                    Nueva marca
+                    <select formControlName="textnuevomavehiculo">
+                        <option value="">Selecciona una opción</option>
+                        <option *ngFor="let marcaVehiculo of marcasVehiculos"
+                            value="{{ marcaVehiculo.id_marca_vehiculo }}">
+                            {{ marcaVehiculo.marca_vehiculo }}
+                        </option>
+                    </select>
+                    <br><br>
                     Nuevo modelo vehículo
                     <label for="MOVehiculo"><input type="text" name="MOVehiculo" id="MOVehiculo"
                             value={{Veh.modelo_vehiculo}} [(ngModel)]="Veh.modelo_vehiculo"
@@ -258,44 +196,32 @@
                             value={{Veh.color_vehiculo}} [(ngModel)]="Veh.color_vehiculo"
                             formControlName="textnuevocovehiculo"></label>
                     <br><br>
-                    <form (ngSubmit)="buscarTipoVe()" [formGroup]="filtrarTipoVe">
-                        Nuevo tipo Vehículo
-                        <select class="opc" formControlName="combofiltro" (click)="consultaTiposVe(2)">
-                            <option value="value1">Tipo vehículo</option>
-                            <option *ngFor="let TipoVe of comboListaTipoVe" [value]="TipoVe.id_tipo_vehiculo">
-                                {{TipoVe.tipo_vehiculo}}
-                            </option>
-                        </select>
-                        <button type="submit" class="special"></button>
-                        <br><br>
-                    </form>
-                    <li *ngFor="let Ve of MiTipoVe">
-                        {{Ve.tipo_vehiculo}}
-                        <label for="TVehiculo" class="resultado"><input type="hidden" name="TVehiculo" id="TVehiculo"
-                                value={{Ve.id_tipo_vehiculo}} [(ngModel)]="Ve.id_tipo_vehiculo"
-                                formControlName="textnuevotvehiculo"></label>
-                        <br><br>
-                    </li>
-                    <form (ngSubmit)="buscarPersona()" [formGroup]="filtrarPersona">
-                        Nuevo cliente
-                        <select class="opc" formControlName="combofiltro" (click)="consultaPersonas(2)">
-                            <option value="value1">Cliente</option>
-                            <option *ngFor="let Persona of comboListaPersona" [value]="Persona.id_persona">
-                                {{Persona.identificacion_persona}}
-                            </option>
-                        </select>
-                        <button type="submit" class="special"></button>
-                        <br><br>
-                    </form>
-                    <li *ngFor="let Per of MiPersona">
-                        {{Per.identificacion_persona}}-
-                        {{Per.p_nombre_persona}}-
-                        {{Per.p_apellido_persona}}
-                        <label for="CLVehiculo" class="resultado"><input type="hidden" name="CLVehiculo" id="CLVehiculo"
-                                value={{Per.id_persona}} [(ngModel)]="Per.id_persona"
-                                formControlName="textnuevoclvehiculo"></label>
-                        <br><br>
-                    </li>
+                    <span class="actual">
+                        Valor actual: {{Veh.tipo_vehiculo}}
+                    </span>
+                    <br>
+                    Nuevo tipo
+                    <select formControlName="textnuevotvehiculo">
+                        <option value="">Selecciona una opción</option>
+                        <option *ngFor="let tipoVehiculo of tiposVehiculos" value="{{ tipoVehiculo.id_tipo_vehiculo }}">
+                            {{ tipoVehiculo.tipo_vehiculo }}
+                        </option>
+                    </select>
+                    <br><br>
+                    <span class="actual">
+                        Valor actual: {{Veh.CC_cliente}}
+                    </span>
+                    <br>
+                    Nuevo cliente
+                    <select formControlName="textnuevoclvehiculo">
+                        <option value="">Selecciona una opción</option>
+                        <option *ngFor="let Cliente of Clientes" value="{{ Cliente.id_persona }}">
+                            {{ Cliente.identificacion_persona }} -
+                            {{ Cliente.p_nombre_persona }} -
+                            {{ Cliente.p_apellido_persona }}
+                        </option>
+                    </select>
+                    <br><br>
                 </ul>
                 <br><br>
                 <button (click)="ActualizarVehiculo()" onclick="location.reload()">Actualizar</button>

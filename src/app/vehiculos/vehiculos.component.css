@@ -305,6 +305,10 @@ tbody.Filb
     font-size: 18px;
 }
 
+.actual {
+    margin-left: 100px;
+}
+
 footer {
     width: 100vw;
     position: fixed;
