@@ -96,24 +96,14 @@
                 <label for="CORepuesto"><input type="text" name="CORepuesto" id="CORepuesto"
                         formControlName="textCORepuesto"></label>
                 <br><br>
-                <form (ngSubmit)="buscarTipoRe()" [formGroup]="filtrarTipoRe">
-                    Tipo repuesto
-                    <select class="opc" formControlName="combofiltro" (click)="consultaTiposRe(2)">
-                        <option value="value1">Tipo repuesto</option>
-                        <option *ngFor="let TipoRe of comboListaTipoRe" [value]="TipoRe.id_tipo_repuesto">
-                            {{TipoRe.tipo_repuesto}}
-                        </option>
-                    </select>
-                    <button type="submit" class="special"></button>
-                    <br><br>
-                </form>
-                <li *ngFor="let Re of MiTipoRe">
-                    {{Re.tipo_repuesto}}
-                    <label for="TRepuesto" class="resultado"><input type="hidden" name="TRepuesto" id="TRepuesto"
-                            value={{Re.id_tipo_repuesto}} [(ngModel)]="Re.id_tipo_repuesto"
-                            formControlName="textTRepuesto"></label>
-                    <br><br>
-                </li>
+                Tipo de repuesto
+                <select formControlName="textTRepuesto">
+                    <option value="">Selecciona una opción</option>
+                    <option *ngFor="let tipoRepuesto of tiposRepuestos" value="{{ tipoRepuesto.id_tipo_repuesto }}">
+                        {{ tipoRepuesto.tipo_repuesto }}
+                    </option>
+                </select>
+                <br><br>
                 Cantidad repuesto
                 <label for="CARepuesto"><input type="text" name="CARepuesto" id="CARepuesto"
                         formControlName="textCARepuesto"></label>
@@ -147,24 +137,18 @@
                             value={{Rep.cod_ref_repuesto}} [(ngModel)]="Rep.cod_ref_repuesto"
                             formControlName="textnuevocorepuesto"></label>
                     <br><br>
-                    <form (ngSubmit)="buscarTipoRe()" [formGroup]="filtrarTipoRe">
-                        Nuevo tipo repuesto
-                        <select class="opc" formControlName="combofiltro" (click)="consultaTiposRe(2)">
-                            <option value="value1">Tipo repuesto</option>
-                            <option *ngFor="let TipoRe of comboListaTipoRe" [value]="TipoRe.id_tipo_repuesto">
-                                {{TipoRe.tipo_repuesto}}
-                            </option>
-                        </select>
-                        <button type="submit" class="special"></button>
-                        <br><br>
-                    </form>
-                    <li *ngFor="let Re of MiTipoRe">
-                        {{Re.tipo_repuesto}}
-                        <label for="TRepuesto" class="resultado"><input type="hidden" name="TRepuesto" id="TRepuesto"
-                                value={{Re.id_tipo_repuesto}} [(ngModel)]="Re.id_tipo_repuesto"
-                                formControlName="textnuevotrepuesto"></label>
-                        <br><br>
-                    </li>
+                    <span class="actual">
+                        Valor actual: {{Rep.tipo_repuesto}}
+                    </span>
+                    <br>
+                    Nuevo tipo de repuesto
+                    <select formControlName="textnuevotrepuesto">
+                        <option value="">Selecciona una opción</option>
+                        <option *ngFor="let tipoRepuesto of tiposRepuestos" value="{{ tipoRepuesto.id_tipo_repuesto }}">
+                            {{ tipoRepuesto.tipo_repuesto }}
+                        </option>
+                    </select>
+                    <br><br>
                     Nueva cantidad repuesto
                     <label for="CARepuesto"><input type="text" name="CARepuesto" id="CARepuesto"
                             value={{Rep.cantidad_repuesto}} [(ngModel)]="Rep.cantidad_repuesto"

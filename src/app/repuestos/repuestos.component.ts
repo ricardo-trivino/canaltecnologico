@@ -24,6 +24,8 @@ export class RepuestosComponent implements OnInit {
   TituloRepuestos = ""; //Titulo lista de tipos de usuario
   TablaRepuestos: any = []; //Encabezados tabla lista de tipos de usuario
 
+  tiposRepuestos: any = []; //Vector que captura la data para el combo de los tipos de documentos
+
   TituloRepuesto = ""; //Titulo del tipo de id buscado
   MiRepuesto: any = []; //Tipo de usuario buscado
   TabBusRepuestos: any = []; //Encabezados tabla tipo de usuario Buscado
@@ -335,24 +337,24 @@ export class RepuestosComponent implements OnInit {
 
   }
 
-    //Generar informe
-    public GenerarInforme() {
-      var mec = this.Informe.getRawValue()['clienteorden'];
-      var fi = this.Informe.getRawValue()['fechainiinforme'];
-      var ff = this.Informe.getRawValue()['fechafininforme'];
-  
-      this.servi.getInformeCliente('/' + mec, fi, ff).subscribe((data: {}) => {
-        this.MiInforme = data;
-        this.TituloInforme = "INFORME";
-        this.TabBusInformes[0] = "Indicador";
-        this.TabBusInformes[1] = "Repuesto";
-        this.TabBusInformes[2] = "Tipo repuesto";
-        this.TabBusInformes[3] = "Cantidad";
-        this.TabBusInformes[4] = "CC Cliente";
-        this.TabBusInformes[5] = "Fecha";
-      },
-        error => { console.log(error) });
-    }
+  //Generar informe
+  public GenerarInforme() {
+    var mec = this.Informe.getRawValue()['clienteorden'];
+    var fi = this.Informe.getRawValue()['fechainiinforme'];
+    var ff = this.Informe.getRawValue()['fechafininforme'];
+
+    this.servi.getInformeCliente('/' + mec, fi, ff).subscribe((data: {}) => {
+      this.MiInforme = data;
+      this.TituloInforme = "INFORME";
+      this.TabBusInformes[0] = "Indicador";
+      this.TabBusInformes[1] = "Repuesto";
+      this.TabBusInformes[2] = "Tipo repuesto";
+      this.TabBusInformes[3] = "Cantidad";
+      this.TabBusInformes[4] = "CC Cliente";
+      this.TabBusInformes[5] = "Fecha";
+    },
+      error => { console.log(error) });
+  }
 
   //Buscar un repuesto su id para editarlo
   buscarEditarRepuesto() {
@@ -399,6 +401,13 @@ export class RepuestosComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    //se invoca el servicio y se carga el combobox de los tipos de documentos
+    this.servi.getExportTiposRe().subscribe((data: { tiposrepuestos: [] }) => {
+      this.tiposRepuestos = data;
+      console.log(this.tiposRepuestos);
+    },
+      error => { console.error(error + " ") });
 
     this.ListaRepuestos = this.formBuilder.group(
       {

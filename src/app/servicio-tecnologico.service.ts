@@ -106,6 +106,13 @@ export class ServicioTecnologicoService {
 
   }
 
+  // Método listar de los tipos de repuesto 
+  getExportTiposRe(): Observable<any> {
+
+    return this.http.get(this.Url + "/tiporep", httpOptions);
+
+  }
+
   // Método mostrar un solo tipo de repuesto
   getTipoRe(id: any): Observable<any> {
 
