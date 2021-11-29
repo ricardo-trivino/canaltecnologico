@@ -274,7 +274,7 @@
         <div class="informe">
             <h2> Informe de ordenes de trabajo por mecánico y periodo de tiempo </h2>
             <form (ngSubmit)="GenerarInforme()" [formGroup]="Informe">
-                <form (ngSubmit)="buscarPersona()" [formGroup]="filtrarPersona">
+                <!--<form (ngSubmit)="buscarPersona()" [formGroup]="filtrarPersona">
                     Mecánico
                     <select class="opc" formControlName="combofiltro" (click)="consultaPersonas(2)">
                         <option value="value1">Mecánico</option>
@@ -292,7 +292,17 @@
                     <label for="Persona" class="resultado"><input type="hidden" name="Persona" id="Persona"
                             value={{Pe.id_persona}} [(ngModel)]="Pe.id_persona" formControlName="mecanicoorden"></label>
                     <br><br>
-                </li>
+                </li>-->
+                Mecánico
+                <select formControlName="mecanicoorden" (click)="consultaOrdenesTr(4)">
+                    <option value="">Selecciona una opción</option>
+                    <option *ngFor="let Mecanico of Mecanicos" value="{{ Mecanico.id_persona }}">
+                        {{ Mecanico.identificacion_persona }} -
+                        {{ Mecanico.p_nombre_persona }} -
+                        {{ Mecanico.p_apellido_persona }}
+                    </option>
+                </select>
+                <br><br>
                 Fecha inicial
                 <label for="FeInicial"><input type="date" name="FeInicial" id="FeInicial"
                         formControlName="fechainiinforme"></label>

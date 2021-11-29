@@ -193,6 +193,19 @@ export class OrdenesTrComponent implements OnInit {
           this.MiOrdenTrE = null;
           this.TituloOrdenTrEdit = "";
         }
+        else if (op == 4) {
+          this.MiInforme = null;
+          this.TituloInforme = "";
+          this.TabBusInformes[0] = "";
+          this.TabBusInformes[1] = "";
+          this.TabBusInformes[2] = "";
+          this.TabBusInformes[3] = "";
+          this.TabBusInformes[4] = "";
+          this.TabBusInformes[5] = "";
+          this.TabBusInformes[6] = "";
+          this.TabBusInformes[7] = "";
+          this.TabBusInformes[8] = "";
+        }
       },
         error => { console.error(error + " ") });
     }
