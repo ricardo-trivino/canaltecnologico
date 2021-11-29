@@ -122,7 +122,7 @@
 
             <form (ngSubmit)="InsertarPersona()" [formGroup]="InsertarGPersona">
 
-                <form (ngSubmit)="buscarTipoId()" [formGroup]="filtrarTipoId">
+                <!--<form (ngSubmit)="buscarTipoId()" [formGroup]="filtrarTipoId">
                     Tipo identificación persona
                     <select class="opc" formControlName="combofiltroid" (click)="consultaTiposId(2)">
                         <option value="value1">Tipo de identificación</option>
@@ -139,7 +139,15 @@
                             value={{Id.id_tipo_identificacion}} [(ngModel)]="Id.id_tipo_identificacion"
                             formControlName="textTIPersona"></label>
                     <br><br>
-                </li>
+                </li>-->
+                Tipo de documento
+                <select formControlName="ComboTipoDocPersona">
+                    <option value="" selected>Selecciona una opción</option>
+                    <option *ngFor="let tipoDocumento of tiposDocumentos" value="{{ tipoDocumento.id_tipo_identificacion }}">
+                        {{ tipoDocumento.tipo_identificacion }}
+                    </option>
+                </select>
+                <br><br>
                 Identificación persona
                 <label for="IPersona"><input type="text" name="IPersona" id="IPersona"
                         formControlName="textIPersona"></label>

@@ -24,6 +24,13 @@ export class ServicioTecnologicoService {
 
   }
 
+  // Método listar de los tipos de identificación 
+  getExportTiposId(): Observable<any> {
+
+    return this.http.get(this.Url + "/tipoid", httpOptions);
+
+  }
+
   // Método mostrar un solo tipo de identificación
   getTipoId(id: any): Observable<any> {
 

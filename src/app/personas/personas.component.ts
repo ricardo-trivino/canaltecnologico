@@ -21,6 +21,8 @@ export class PersonasComponent implements OnInit {
   TablaTiposId: any = []; //Encabezados tabla lista de tipos de identificación
   TablaTiposUs: any = []; //Encabezados tabla lista de tipos de usuario
 
+  tiposDocumentos: any = []; //Vector que captura la data para el combo de los tipos de documentos
+
   TituloPersona = ""; //Titulo del tipo de id buscado
   TituloTipoId = ""; //Titulo del tipo de id buscado
   TituloTipoUs = ""; //Titulo del tipo de id buscado
@@ -380,6 +382,12 @@ export class PersonasComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    //se invoca el servicio y se carga el combobox de los tipos de documentos
+    this.servi.getExportTiposId().subscribe((data: { tiposdocumentos: [] }) => {
+      this.tiposDocumentos = data;
+      console.log(this.tiposDocumentos);
+    },
+      error => { console.error(error + " ") });
 
     this.ListaPersonas = this.formBuilder.group(
       {
