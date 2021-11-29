@@ -25,6 +25,7 @@ export class RepuestosComponent implements OnInit {
   TablaRepuestos: any = []; //Encabezados tabla lista de tipos de usuario
 
   tiposRepuestos: any = []; //Vector que captura la data para el combo de los tipos de documentos
+  Clientes: any = []; //Vector que captura la data para el combo de los clientes
 
   TituloRepuesto = ""; //Titulo del tipo de id buscado
   MiRepuesto: any = []; //Tipo de usuario buscado
@@ -137,6 +138,16 @@ export class RepuestosComponent implements OnInit {
           this.comboEditarRepuesto = data;
           this.MiRepuestoE = null;
           this.TituloRepuestoEdit = "";
+        }
+        else if (op == 4) {
+          this.MiInforme = null;
+          this.TituloInforme = "";
+          this.TabBusInformes[0] = "";
+          this.TabBusInformes[1] = "";
+          this.TabBusInformes[2] = "";
+          this.TabBusInformes[3] = "";
+          this.TabBusInformes[4] = "";
+          this.TabBusInformes[5] = "";
         }
       },
         error => { console.error(error + " ") });
@@ -401,6 +412,13 @@ export class RepuestosComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    //se invoca el servicio y se carga el combobox de los clientes
+    this.servi.getExportClientes().subscribe((data: { clientes: [] }) => {
+      this.Clientes = data;
+      console.log(this.Clientes);
+    },
+      error => { console.error(error + " ") });
 
     //se invoca el servicio y se carga el combobox de los tipos de documentos
     this.servi.getExportTiposRe().subscribe((data: { tiposrepuestos: [] }) => {
