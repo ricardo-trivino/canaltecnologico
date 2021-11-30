@@ -155,7 +155,7 @@ div.lista
     left: 385px;
     border: 3px  solid rgb(248, 77, 205); 
     border-radius: 5px;
-    width: 590px;
+    width: 650px;
     background:linear-gradient(30deg, bisque,snow, beige, antiquewhite, cornsilk);
     box-shadow: 10px 10px 5px 1px rgba(0.5, 0.5, 0.2, 0.2);
     text-align: center
@@ -174,7 +174,7 @@ div.buscar
     left: 385px;
     border: 3px  solid rgb(165, 228, 160);
     border-radius: 5px;
-    width: 590px;
+    width: 650px;
     background:linear-gradient(30deg, cornsilk,white, mistyrose, cornsilk, thistle);
     box-shadow: 10px 10px 5px 1px rgba(0.5, 0.5, 0.2, 0.2);
     text-align: center
@@ -195,7 +195,7 @@ div.crea
     border-radius: 5px;
     background:linear-gradient(30deg, cornsilk,white, seashell, cornsilk, whitesmoke);
     box-shadow: 10px 10px 5px 1px rgba(0.5, 0.5, 0.2, 0.2);
-    width: 590px;
+    width: 650px;
     background-color:rgb(198, 158, 224);
     text-align: center
 }
@@ -213,7 +213,7 @@ div.edit
     left: 385px;
     border: 3px  solid rgb(83, 86, 235);
     border-radius: 5px;
-    width: 590px;
+    width: 650px;
     background:linear-gradient(30deg, cornsilk,white, seashell, cornsilk, whitesmoke);
     box-shadow: 10px 10px 5px 1px rgba(0.5, 0.5, 0.2, 0.2);
     text-align: center
