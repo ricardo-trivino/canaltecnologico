@@ -12,44 +12,24 @@ import { ServicioTecnologicoService } from '../servicio-tecnologico.service';
 export class PersonasComponent implements OnInit {
 
   Personas: any = []; //Lista de tipos de usuario
-  TiposId: any = []; //Lista de tipos de identificación
-  TiposUs: any = []; //Lista de tipos de usuario
   TituloPersonas = ""; //Titulo lista de tipos de usuario
-  TituloTiposId = ""; //Titulo lista de tipos de identificación
-  TituloTiposUs = ""; //Titulo lista de tipos de usuario
   TablaPersonas: any = []; //Encabezados tabla lista de tipos de usuario
-  TablaTiposId: any = []; //Encabezados tabla lista de tipos de identificación
-  TablaTiposUs: any = []; //Encabezados tabla lista de tipos de usuario
 
   tiposDocumentos: any = []; //Vector que captura la data para el combo de los tipos de documentos
   tiposUsuarios: any = []; //Vector que captura la data para el combo de los tipos de documentos
 
   TituloPersona = ""; //Titulo del tipo de id buscado
-  TituloTipoId = ""; //Titulo del tipo de id buscado
-  TituloTipoUs = ""; //Titulo del tipo de id buscado
   MiPersona: any = []; //Tipo de usuario buscado
-  MiTipoId: any = []; //Tipo de identificación buscado
-  MiTipoUs: any = []; //Tipo de usuario buscado
   TabBusPersonas: any = []; //Encabezados tabla tipo de usuario Buscado
-  TabBusTiposId: any = []; //Encabezados tabla Tipo de identificación Buscado
-  TabBusTiposUs: any = []; //Encabezados tabla tipo de usuario Buscado
   comboListaPersona: any = [];
-  comboListaTipoIdP: any = [];
-  comboListaTipoUs: any = [];
 
   title = "Manejo de personas";
   controlLista = 1;  //Control para limpiar lista
   BuscarEvalor = 1; //Control para carga el valor a buscar
 
   TituloPersonaEdit = ""; //Titulo de tipo de usuario a editar
-  TituloTipoIdEdit = ""; //Titulo de tipo de identificación a editar
-  TituloTipoUsEdit = ""; //Titulo de tipo de usuario a editar
   MiPersonaE: any = []; //Tipo de usuario a editar
-  MiTipoIdE: any = []; //Tipo de identificación a editar
-  MiTipoUsE: any = []; //Tipo de usuario a editar
   comboEditarPersona: any = []; //Combo editar tipo de usuario
-  comboEditarTipoId: any = []; //Combo editar tipo de identificación
-  comboEditarTipoUs: any = []; //Combo editar tipo de usuario
 
   //Form group 
   ListaPersonas = new FormGroup(
@@ -57,14 +37,6 @@ export class PersonasComponent implements OnInit {
 
     });
   filtrarPersona = new FormGroup(
-    {
-      combofiltro: new FormControl()
-    });
-  filtrarTipoId = new FormGroup(
-    {
-      combofiltroid: new FormControl()
-    });
-  filtrarTipoUs = new FormGroup(
     {
       combofiltro: new FormControl()
     });
@@ -168,80 +140,6 @@ export class PersonasComponent implements OnInit {
 
   }
 
-  //Consultar todos los tipos de identificación
-  public consultaTiposId(op: any) {
-
-    if (this.controlLista == 1) {
-      this.servi.getTiposId().subscribe((data: any) => {
-        if (op == 1) {
-          let dat = data;
-          this.TiposId = data;
-          this.TituloTiposId = "LISTA DE TIPOS DE IDENTIFICACIÓN";
-          this.TablaTiposId[0] = "Indicador";
-          this.TablaTiposId[1] = "Denominación";
-        }
-        else if (op == 2) {
-          this.comboListaTipoIdP = data;
-          this.MiTipoId = null;
-          this.TituloTipoId = "";
-          this.TabBusTiposId[0] = "";
-          this.TabBusTiposId[1] = "";
-        }
-        else if (op == 3) {
-          this.comboEditarTipoId = data;
-          this.MiTipoIdE = null;
-          this.TituloTipoIdEdit = "";
-        }
-      },
-        error => { console.error(error + " ") });
-    }
-    else {
-      this.TiposId = null;
-      this.TituloTiposId = "";
-      this.TablaTiposId[0] = "";
-      this.TablaTiposId[1] = "";
-      this.controlLista = 1;
-    }
-
-  }
-
-  //Consultar todos los tipos de usuario
-  public consultaTiposUs(op: any) {
-
-    if (this.controlLista == 1) {
-      this.servi.getTiposUs().subscribe((data: any) => {
-        if (op == 1) {
-          let dat = data;
-          this.TiposUs = data;
-          this.TituloTiposUs = "LISTA DE TIPOS DE USUARIO";
-          this.TablaTiposUs[0] = "Indicador";
-          this.TablaTiposUs[1] = "Denominación";
-        }
-        else if (op == 2) {
-          this.comboListaTipoUs = data;
-          this.MiTipoUs = null;
-          this.TituloTipoUs = "";
-          this.TabBusTiposUs[0] = "";
-          this.TabBusTiposUs[1] = "";
-        }
-        else if (op == 3) {
-          this.comboEditarTipoUs = data;
-          this.MiTipoUsE = null;
-          this.TituloTipoUsEdit = "";
-        }
-      },
-        error => { console.error(error + " ") });
-    }
-    else {
-      this.TiposUs = null;
-      this.TituloTiposUs = "";
-      this.TablaTiposUs[0] = "";
-      this.TablaTiposUs[1] = "";
-      this.controlLista = 1;
-    }
-
-  }
-
   //Limpiar la lista
   public LimpiarLista() {
 
@@ -267,34 +165,6 @@ export class PersonasComponent implements OnInit {
       this.TabBusPersonas[8] = "Correo";
       this.TabBusPersonas[9] = "Dirección";
       this.TabBusPersonas[10] = "Rol";
-    },
-      error => { console.log(error) });
-
-  }
-
-  //Buscar un tipo de identificación por su id
-  public buscarTipoId() {
-
-    var filtrovalorid = this.filtrarTipoId.getRawValue()['combofiltroid'];
-    this.servi.getTipoId('/' + filtrovalorid).subscribe((data: {}) => {
-      this.MiTipoId = data;
-      this.TituloTipoId = "TIPO DE DOCUMENTO SELECCIONADO";
-      this.TabBusTiposId[0] = "Indicador";
-      this.TabBusTiposId[1] = "Denominación";
-    },
-      error => { console.log(error) });
-
-  }
-
-  //Buscar un tipo de usuario por su id
-  public buscarTipoUs() {
-
-    var filtrovalor = this.filtrarTipoUs.getRawValue()['combofiltro'];
-    this.servi.getTipoUs('/' + filtrovalor).subscribe((data: {}) => {
-      this.MiTipoUs = data;
-      this.TituloTipoUs = "TIPO DE USUARIO SELECCIONADO";
-      this.TabBusTiposUs[0] = "Indicador";
-      this.TabBusTiposUs[1] = "Denominación";
     },
       error => { console.log(error) });
 
@@ -402,14 +272,6 @@ export class PersonasComponent implements OnInit {
 
       });
     this.filtrarPersona = this.formBuilder.group(
-      {
-        combofiltro: []
-      });
-    this.filtrarTipoId = this.formBuilder.group(
-      {
-        combofiltroid: []
-      });
-    this.filtrarTipoUs = this.formBuilder.group(
       {
         combofiltro: []
       });
